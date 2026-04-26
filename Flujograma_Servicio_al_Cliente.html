@@ -1,0 +1,2711 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mapa de Procesos · Servicio al Cliente · Constructora Independencia</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Barlow:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Constructora Independencia — Paleta Corporativa Verde */
+    --ci-green:      #0F6F4D;   /* primario */
+    --ci-green-dark: #0A4A33;
+    --ci-green-deep: #06321F;
+    --ci-green-soft: #E0F0E7;
+    --ci-lime:       #A4CD39;   /* acento hoja */
+    --ci-lime-dark:  #7FA827;
+    --ci-lime-soft:  #EEF7D6;
+    --ci-sand:       #C9A04E;   /* acento ámbar (KPIs / urgencia leve) */
+    --ci-coral:      #C8102E;   /* solo para "urgente / crítico" */
+    --ci-coral-soft: #FADDE2;
+
+    /* Aliases retro-compatibles con CSS existente */
+    --ci-red:        var(--ci-green);
+    --ci-red-dark:   var(--ci-green-dark);
+    --ci-red-soft:   var(--ci-green-soft);
+    --ci-navy:       var(--ci-green-dark);
+    --ci-navy-dark:  var(--ci-green-deep);
+    --ci-gold:       var(--ci-lime);
+
+    --ci-cream:      #F4F8F2;
+    --ci-paper:      #F8FBF6;
+    --ci-ink:        #14241D;
+
+    /* Stage gradient (paleta verde Independencia) */
+    --s1: #06321F;
+    --s2: #0A4A33;
+    --s3: #0F6F4D;
+    --s4: #4A9C5E;
+    --s5: #A4CD39;
+    --s6: #7FA827;
+
+    /* Tags */
+    --tag-postventa:    #E87B2D;
+    --tag-postventa-bg: #FCE8D6;
+    --tag-operaciones:  #1F6E5A;
+    --tag-operaciones-bg:#D6EAE1;
+    --tag-calidad:      #2C7D39;
+    --tag-calidad-bg:   #DCEEDD;
+    --tag-comercial:    #B27D17;
+    --tag-comercial-bg: #FAECCB;
+    --tag-sistema:      #2F5FA3;
+    --tag-sistema-bg:   #DBE6F5;
+    --tag-cliente:      #6B4F8C;
+    --tag-cliente-bg:   #E6DCF0;
+    --tag-legal:        #8C1D3E;
+    --tag-legal-bg:     #F3D7DF;
+    --tag-gerencia:     #0F3F4E;
+    --tag-gerencia-bg:  #D2E3E8;
+
+    --shadow-sm: 0 1px 3px rgba(15,23,42,.06);
+    --shadow:    0 6px 18px rgba(15,23,42,.08);
+    --shadow-lg: 0 20px 40px rgba(15,23,42,.14);
+    --radius:    16px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--ci-paper);
+    color: var(--ci-ink);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(circle at 20% -5%, rgba(15,111,77,.05) 0%, transparent 40%),
+      radial-gradient(circle at 100% 110%, rgba(164,205,57,.07) 0%, transparent 45%);
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    background: linear-gradient(135deg, var(--ci-green-deep) 0%, var(--ci-green-dark) 50%, var(--ci-green) 100%);
+    color: #fff; padding: 40px 0 32px; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content:''; position:absolute; inset:0;
+    background:
+      linear-gradient(105deg, transparent 55%, rgba(164,205,57,.16) 58%, transparent 62%),
+      radial-gradient(circle at 92% 18%, rgba(164,205,57,.22) 0%, transparent 40%),
+      radial-gradient(circle at 8% 90%, rgba(164,205,57,.10) 0%, transparent 35%);
+    pointer-events:none;
+  }
+  .hero::after {
+    content:''; position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(circle at 50% 50%, #000 30%, transparent 75%);
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 1600px; margin: 0 auto; padding: 0 32px; position: relative; }
+  .brand-row { display:flex; align-items:center; justify-content:space-between; margin-bottom: 28px; gap: 20px; flex-wrap: wrap; }
+  .brand { display: flex; align-items: center; gap: 14px; }
+  .brand-logo {
+    width:60px; height:60px; border-radius: 12px;
+    background: #FFFFFF;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow: 0 8px 22px rgba(15,111,77,.45), inset 0 0 0 2px rgba(255,255,255,.08);
+    border: 2px solid rgba(255,255,255,.25);
+    position: relative; overflow: hidden;
+  }
+  .brand-logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .brand-logo svg { width: 76%; height: 76%; }
+  .brand-name { font-family:'Barlow'; font-weight:800; font-size:18px; letter-spacing:.4px; }
+  .brand-sub  { font-size:11px; opacity:.78; letter-spacing:1.6px; text-transform:uppercase; color: var(--ci-lime); font-weight:600; }
+  .doc-meta   { display:flex; gap:18px; font-size:11px; opacity:.85; }
+  .doc-meta b { color:var(--ci-lime); display:block; font-weight:700; font-size:12px; letter-spacing:.5px; }
+  .doc-meta > div { text-align:right; }
+
+  .hero h1 {
+    font-family:'Barlow'; font-size: clamp(28px, 4vw, 44px); font-weight:800;
+    line-height:1.05; letter-spacing:-.5px; margin-bottom: 10px;
+  }
+  .hero h1 span { color: var(--ci-lime); }
+  .hero-sub { font-size:15px; max-width: 820px; opacity:.9; font-weight:300; }
+
+  .kpi-row { display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:12px; margin-top: 24px; }
+  .kpi {
+    background: rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.16);
+    backdrop-filter: blur(10px); border-radius: 12px; padding: 14px 16px;
+    border-top: 3px solid var(--ci-lime);
+    transition: transform .25s, background .25s;
+  }
+  .kpi:hover { transform: translateY(-2px); background: rgba(255,255,255,.11); }
+  .kpi:nth-child(2){ border-top-color: var(--ci-sand); }
+  .kpi:nth-child(3){ border-top-color: #5DADE2; }
+  .kpi:nth-child(4){ border-top-color: #FFB454; }
+  .kpi-val { font-family:'Barlow'; font-weight:800; font-size:24px; color:#fff; line-height:1; }
+  .kpi-val small { font-size:13px; opacity:.7; margin-left:4px; font-weight:500; }
+  .kpi-lbl { font-size:10.5px; text-transform:uppercase; letter-spacing:1.1px; opacity:.75; margin-top:5px; }
+
+  /* ============ TOOLBAR ============ */
+  .toolbar {
+    position: sticky; top:0; z-index: 40;
+    background: rgba(255,255,255,.92); backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(15,23,42,.08);
+    padding: 12px 32px;
+  }
+  .toolbar-inner { max-width: 1600px; margin: 0 auto; display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+  .tb-title {
+    font-family:'Barlow'; font-weight:700; color: var(--ci-navy-dark);
+    font-size:14px; letter-spacing:.5px; text-transform:uppercase;
+  }
+  .tb-title::before {
+    content:''; display:inline-block; width:8px; height:8px; border-radius:50%;
+    background: var(--ci-green); margin-right:10px; vertical-align: middle;
+    box-shadow: 0 0 0 4px rgba(15,111,77,.18);
+  }
+  .filter-chips { display:flex; gap:8px; margin-left:auto; flex-wrap:wrap; }
+  .chip {
+    padding: 6px 12px; border-radius: 100px; font-size:11px; font-weight:600;
+    cursor: pointer; user-select:none;
+    background: #fff; border:1px solid rgba(15,23,42,.1);
+    color: var(--ci-navy-dark); transition: all .2s;
+    display: inline-flex; align-items:center; gap:6px;
+  }
+  .chip:hover { border-color: var(--ci-green); color: var(--ci-green); transform: translateY(-1px); }
+  .chip.active { background: var(--ci-green); color:white; border-color: var(--ci-green); }
+  .chip i { width:8px; height:8px; border-radius:50%; display:inline-block; }
+
+  .legend-hint { font-size:11px; color: #6B7280; margin-left:10px; }
+
+  /* ============ MAIN ============ */
+  main { padding: 36px 0 60px; }
+  .map-wrap { max-width: 1600px; margin: 0 auto; padding: 0 32px; }
+
+  .map-header {
+    display:flex; align-items:baseline; gap:14px; margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+  .map-header h2 {
+    font-family:'Barlow'; font-weight:800; font-size: clamp(22px, 3vw, 30px);
+    color: var(--ci-green-deep); letter-spacing:-.3px;
+  }
+  .map-header p { font-size:14px; color:#4b5563; }
+  .map-header .hint-line {
+    width:60px; height:3px;
+    background: linear-gradient(90deg, var(--ci-green), var(--ci-lime));
+    border-radius:3px; margin-right: 6px;
+  }
+
+  /* ============ PROCESS MAP ============ */
+  .process-map {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 12px;
+    position: relative;
+  }
+
+  .stage {
+    position: relative;
+    display:flex; flex-direction: column; gap: 10px;
+    min-width: 0;
+  }
+
+  .stage-head {
+    display:flex; align-items:center; gap:10px;
+    padding-bottom: 10px;
+    border-bottom: 2px dashed rgba(15,23,42,.12);
+    margin-bottom: 2px;
+  }
+  .stage-num {
+    width: 36px; height: 36px; border-radius: 50%;
+    display:flex; align-items:center; justify-content:center;
+    color:#fff; font-family:'Barlow'; font-weight:900; font-size:16px;
+    flex-shrink:0;
+    box-shadow: 0 6px 14px -4px rgba(0,0,0,.25);
+  }
+  .stage[data-s="1"] .stage-num { background: var(--s1); }
+  .stage[data-s="2"] .stage-num { background: var(--s2); }
+  .stage[data-s="3"] .stage-num { background: var(--s3); }
+  .stage[data-s="4"] .stage-num { background: var(--s4); }
+  .stage[data-s="5"] .stage-num { background: var(--s5); }
+  .stage[data-s="6"] .stage-num { background: var(--s6); }
+  .stage-title {
+    font-family:'Barlow'; font-weight:800; font-size: 14px;
+    color: var(--ci-navy-dark); line-height:1.15;
+    min-width: 0;
+  }
+  .stage-title span { font-size: 10.5px !important; }
+
+  /* Decorative arrow between stages */
+  .stage:not(:last-child)::after {
+    content:''; position:absolute; right:-9px; top: 13px;
+    width: 7px; height: 7px; border-top: 2px solid rgba(15,23,42,.22);
+    border-right: 2px solid rgba(15,23,42,.22);
+    transform: rotate(45deg);
+    pointer-events:none;
+  }
+
+  .stage-body { display:flex; flex-direction:column; gap: 10px; flex-grow: 1; }
+
+  /* CARD */
+  .card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 12px 13px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(15,23,42,.06);
+    position: relative;
+    cursor: pointer;
+    transition: all .25s cubic-bezier(.4,.0,.2,1);
+    overflow: hidden;
+    min-width: 0;
+  }
+  .card::before {
+    content:''; position:absolute; left:0; top:0; bottom:0; width: 4px;
+    background: var(--card-accent, var(--s3));
+    border-radius: 4px 0 0 4px;
+  }
+  .card:hover {
+    transform: translateY(-3px); box-shadow: var(--shadow);
+    border-color: rgba(15,111,77,.25);
+  }
+  .card:hover::before { width: 6px; }
+  .card:hover .card-title { color: var(--ci-green); }
+  .card.dimmed { opacity: .35; filter: grayscale(.7); }
+
+  .card-code {
+    font-family:'Barlow'; font-weight:700; font-size:9.5px;
+    color:#8E9AAF; letter-spacing:1.2px; margin-bottom: 4px;
+  }
+  .card-title {
+    font-family:'Barlow'; font-weight:700; font-size:13px;
+    color: var(--ci-navy-dark); line-height:1.22; margin-bottom: 8px;
+    transition: color .2s;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+  }
+  .card-tag {
+    display:inline-flex; align-items:center; gap:5px;
+    padding: 3px 9px; border-radius: 100px;
+    font-size: 9.5px; font-weight: 700; letter-spacing: .3px;
+    background: var(--tag-bg, var(--tag-postventa-bg));
+    color: var(--tag-color, var(--tag-postventa));
+    text-transform: uppercase;
+  }
+  .card-tag::before {
+    content:''; width:6px; height:6px; border-radius:50%;
+    background: var(--tag-color, var(--tag-postventa));
+  }
+  .card-click-hint {
+    position: absolute; right: 14px; top: 16px;
+    font-size: 11px; color: #C7CDD7; font-weight:600;
+    opacity:0; transition: opacity .2s;
+  }
+  .card:hover .card-click-hint { opacity: 1; color: var(--ci-green); }
+
+  .stage-footer {
+    margin-top: 8px; display:flex; flex-wrap:wrap; gap:6px;
+    padding-top: 12px; border-top: 1px dashed rgba(15,23,42,.08);
+  }
+  .sys-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 4px 10px; border-radius: 6px;
+    font-size: 10px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase;
+    color: #fff; background: var(--sys, var(--ci-navy));
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  }
+  .sys-badge.pi { --sys: #2F5FA3; }
+  .sys-badge.po { --sys: #6B4F8C; }
+  .sys-badge.sa { --sys: var(--ci-green); }
+  .sys-badge.ic { --sys: var(--ci-lime); color:#0A2E1F; }
+  .sys-badge.mv { --sys: #1F6E5A; }
+  .sys-badge.en { --sys: #E87B2D; }
+
+  .stage-footer { margin-top: 6px; gap: 5px; padding-top: 10px; }
+  .sys-badge { padding: 3px 8px; font-size: 9.5px; letter-spacing: .3px; }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 1200px) {
+    .process-map { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .stage:not(:last-child)::after { display:none; }
+    .bpmn-header { padding: 22px 22px 18px; }
+    .bpmn-header-left h2 { font-size: 24px; }
+    .bpmn-kpi { min-width: 96px; padding: 10px 14px; }
+    .bpmn-kpi b { font-size: 19px; }
+  }
+  @media (max-width: 900px) {
+    .hero { padding: 30px 0 24px; }
+    .hero h1 { font-size: clamp(24px, 6vw, 32px); }
+    .brand-row { margin-bottom: 20px; }
+    .doc-meta { font-size: 10.5px; gap: 12px; }
+    .doc-meta > div { text-align:left; }
+    .kpi-row { grid-template-columns: repeat(2, 1fr); }
+    .toolbar { padding: 10px 16px; }
+    .filter-chips { margin-left: 0; width: 100%; }
+    .map-header { gap: 8px; }
+    .bpmn-section { margin-top: 36px; border-radius: 16px; }
+    .bpmn-header { flex-direction: column; gap: 16px; }
+    .bpmn-kpis { gap: 8px; }
+    .bpmn-kpi { flex: 1 1 calc(50% - 6px); min-width: 0; }
+    .cycle-divider { margin: 22px 16px 6px; padding: 12px; }
+    .cycle-num { flex: 0 0 44px; height: 44px; font-size: 22px; }
+    .cycle-info h3 { font-size: 15px; }
+    .cycle-info p { font-size: 12px; }
+    .modal { border-radius: 14px; max-height: 92vh; }
+    .modal-head { padding: 16px 18px; }
+    .modal-head h3 { font-size: 18px; }
+    .modal-body { padding: 16px 18px 22px; }
+  }
+  @media (max-width: 800px) {
+    .process-map { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .process-map { grid-template-columns: 1fr; gap: 22px; }
+    .hero { padding: 26px 0 22px; }
+    main { padding: 22px 0 42px; }
+    .map-wrap, .hero-inner, .toolbar-inner { padding-left: 16px !important; padding-right: 16px !important; }
+    .bpmn-canvas svg { min-width: 2400px !important; }
+    .kpi-row { grid-template-columns: 1fr; }
+    .brand-row { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .doc-meta { width: 100%; justify-content: space-between; }
+    .bpmn-legend { font-size: 10.5px; gap: 10px; }
+    .bpmn-subbar { padding: 12px 14px; }
+    .bpmn-tip { padding: 12px 16px 18px; font-size: 11.5px; }
+    .legend-card { padding: 18px 16px; margin-top: 22px; }
+    footer { padding: 22px 16px 18px; }
+  }
+
+  /* ============ MODAL ============ */
+  .modal-backdrop {
+    position: fixed; inset: 0; background: rgba(6,50,31,.62);
+    backdrop-filter: blur(6px); z-index: 100;
+    display:none; align-items:center; justify-content:center;
+    padding: 20px; opacity: 0; transition: opacity .25s;
+  }
+  .modal-backdrop.open { display:flex; opacity: 1; }
+  .modal {
+    background: #fff; border-radius: 20px;
+    max-width: 880px; width: 100%; max-height: 88vh; overflow: auto;
+    box-shadow: var(--shadow-lg);
+    transform: translateY(20px) scale(.98);
+    transition: transform .3s cubic-bezier(.4,.0,.2,1);
+  }
+  .modal-backdrop.open .modal { transform: translateY(0) scale(1); }
+  .modal-head {
+    padding: 22px 26px; border-bottom: 1px solid rgba(15,23,42,.07);
+    display:flex; align-items:flex-start; justify-content:space-between; gap:16px;
+    background: linear-gradient(135deg, #fff, var(--ci-green-soft));
+    position: sticky; top:0; z-index:2;
+  }
+  .modal-head .code {
+    font-family:'Barlow'; font-weight:700; font-size:11px;
+    color:#8E9AAF; letter-spacing:2px; margin-bottom: 6px;
+  }
+  .modal-head h3 {
+    font-family:'Barlow'; font-size: 22px; font-weight:800;
+    color: var(--ci-navy-dark); letter-spacing:-.3px;
+  }
+  .modal-close {
+    width: 34px; height: 34px; border-radius: 50%;
+    background:#F5F5F7; border: none; cursor: pointer; font-size:18px;
+    color: var(--ci-navy-dark); display:flex; align-items:center; justify-content:center;
+    transition: background .2s;
+    flex-shrink: 0;
+  }
+  .modal-close:hover { background: var(--ci-green); color:white; }
+  .modal-body { padding: 22px 26px 28px; }
+  .modal-body h4 {
+    font-family:'Barlow'; font-weight:800; font-size:13px;
+    color: var(--ci-green-deep); text-transform: uppercase; letter-spacing:1.5px;
+    margin: 18px 0 10px; padding-bottom: 6px;
+    border-bottom: 2px solid var(--ci-lime);
+    display:inline-block;
+  }
+  .modal-body h4:first-child { margin-top:0; }
+  .modal-body p, .modal-body li { font-size:14px; color:#334155; }
+  .modal-body ul { padding-left: 20px; }
+  .modal-body ul li { margin-bottom: 6px; }
+  .modal-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 14px 0 6px; }
+  .modal-metric {
+    background: var(--ci-cream); border-left: 3px solid var(--ci-lime);
+    padding: 12px 14px; border-radius: 0 10px 10px 0;
+  }
+  .modal-metric b { font-family:'Barlow'; color: var(--ci-navy-dark); font-size:18px; font-weight:800; display:block; }
+  .modal-metric small { font-size:11px; color:#6B7280; text-transform: uppercase; letter-spacing:1px; font-weight:600; }
+  .modal-flow {
+    background: #FAFAFA; border: 1px dashed #CBD5E1;
+    border-radius: 10px; padding: 16px; margin: 10px 0; overflow-x:auto;
+  }
+  .flow-mini {
+    display:flex; align-items:center; gap: 8px; flex-wrap:nowrap; min-width: fit-content;
+  }
+  .fstep {
+    background:white; border: 1px solid rgba(15,23,42,.1);
+    border-radius: 10px; padding: 10px 14px; font-size: 12px;
+    font-weight:600; color: var(--ci-navy-dark); min-width: 110px;
+    box-shadow: var(--shadow-sm); text-align:center; flex-shrink: 0;
+  }
+  .fstep.start { background: #E8F5E9; border-color:#4CAF50; color:#1B5E20; }
+  .fstep.end   { background: #FFEBEE; border-color:#C62828; color:#B71C1C; }
+  .fstep.gw    { background: #FFF8DC; border-color:#D9A617; color:#5C4200; font-style: italic; }
+  .farrow { color:#94A3B8; font-weight:700; font-size: 16px; flex-shrink: 0; }
+
+  .quote-box {
+    background: var(--ci-green-deep); color:white; border-radius: 14px;
+    padding: 20px 24px; position: relative; margin-top: 18px;
+    background-image: linear-gradient(135deg, var(--ci-green-deep) 0%, var(--ci-green-dark) 100%);
+  }
+  .quote-box::before {
+    content:'"'; position:absolute; top:-5px; left: 12px;
+    font-family:'Barlow',serif; font-size: 70px; color: var(--ci-lime);
+    line-height:1;
+  }
+  .quote-box p { font-style: italic; font-size: 14px; color: rgba(255,255,255,.95); padding-left: 30px; font-weight: 300; }
+
+  /* ============ FOOTER ============ */
+  footer {
+    background: linear-gradient(135deg, var(--ci-green-deep) 0%, var(--ci-green-dark) 100%);
+    color: rgba(255,255,255,.7);
+    padding: 30px 20px 24px; text-align:center;
+  }
+  footer .brand-name { color:#fff; font-family:'Barlow'; font-weight:800; font-size: 15px; letter-spacing:1.5px; }
+  footer .brand-line { width:64px; height:3px; background: linear-gradient(90deg, var(--ci-lime), var(--ci-green)); margin: 12px auto; border-radius: 2px; }
+  footer p { font-size: 12px; }
+
+  /* Legend area bottom */
+  .legend-card {
+    background: #fff; border-radius: 14px; padding: 18px 22px;
+    border: 1px solid rgba(15,23,42,.06); box-shadow: var(--shadow-sm);
+    margin-top: 32px;
+  }
+  .legend-card h3 {
+    font-family:'Barlow'; font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px;
+    color: var(--ci-navy-dark); margin-bottom: 12px;
+  }
+  .legend-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px 22px;
+  }
+  .legend-grid .card-tag { font-size: 11px; }
+
+  /* ================== BPMN INTERACTIVE FLOW ================== */
+  .bpmn-section {
+    margin-top: 52px;
+    background: #fff;
+    border-radius: 22px;
+    border: 1px solid rgba(15,23,42,.06);
+    box-shadow: 0 30px 60px -20px rgba(15,23,42,.25), 0 18px 36px -18px rgba(15,23,42,.18);
+    overflow: hidden;
+    position: relative;
+  }
+  .bpmn-section::before {
+    content:''; position:absolute; top:0; left:0; right:0; height:4px;
+    background: linear-gradient(90deg, var(--ci-green-deep) 0%, var(--ci-green-dark) 25%, var(--ci-green) 55%, var(--ci-lime) 90%, #E8F2C2 100%);
+    z-index: 5;
+  }
+  .bpmn-header {
+    display:flex; align-items:flex-start; justify-content:space-between;
+    padding: 26px 32px 22px;
+    background:
+      radial-gradient(circle at 0% 0%, rgba(164,205,57,.22) 0%, transparent 45%),
+      radial-gradient(circle at 100% 100%, rgba(15,111,77,.40) 0%, transparent 45%),
+      linear-gradient(135deg, var(--ci-green-deep) 0%, var(--ci-green-dark) 100%);
+    color: #fff;
+    gap: 24px; flex-wrap: wrap; position: relative;
+  }
+  .bpmn-header-left { max-width: 740px; }
+  .bpmn-header-left .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 10.5px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--ci-lime); margin-bottom: 8px;
+    background: rgba(164,205,57,.13); padding: 5px 12px; border-radius: 20px;
+    border: 1px solid rgba(164,205,57,.32);
+  }
+  .bpmn-header-left h2 {
+    font-family:'Barlow'; font-size: 28px; font-weight:800; letter-spacing:-.5px; margin-bottom: 8px; line-height: 1.1;
+  }
+  .bpmn-header-left h2 span { color: var(--ci-lime); }
+  .bpmn-header-left p { font-size: 13px; opacity:.88; font-weight:300; }
+  .bpmn-kpis { display:flex; gap: 12px; flex-wrap: wrap; }
+  .bpmn-kpi {
+    background: rgba(255,255,255,.08); backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 12px; padding: 12px 16px; min-width: 110px;
+  }
+  .bpmn-kpi b {
+    display:block; font-family:'Barlow'; font-size: 22px; font-weight: 800; color: var(--ci-lime); line-height:1;
+  }
+  .bpmn-kpi small { display:block; font-size:10px; text-transform:uppercase; letter-spacing:1.2px; opacity:.75; margin-top:4px; }
+
+  /* Legend / Toolbar */
+  .bpmn-subbar {
+    display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap: wrap;
+    padding: 14px 28px; background: var(--ci-cream);
+    border-bottom: 1px solid rgba(15,23,42,.08);
+  }
+  .bpmn-legend { display:flex; gap: 16px; flex-wrap: wrap; align-items:center; font-size: 11.5px; color: var(--ci-navy-dark); font-weight:500; }
+  .bpmn-legend .lg-item { display:flex; align-items:center; gap:7px; }
+  .bpmn-legend .lg-icon {
+    width:22px; height:22px; display:inline-flex; align-items:center; justify-content:center;
+    border-radius: 50%; box-shadow: 0 2px 5px rgba(0,0,0,.12);
+  }
+  .bpmn-legend .lg-start { background: radial-gradient(circle, #6BD18B, #2BAE66); border:2px solid #fff; }
+  .bpmn-legend .lg-end   { background: radial-gradient(circle, #E4384D, #B0102C); border:2px solid #fff; }
+  .bpmn-legend .lg-task  { background: linear-gradient(var(--ci-green) 0%, var(--ci-green-dark) 100%); border-radius: 5px !important; }
+  .bpmn-legend .lg-gw    {
+    background: transparent; box-shadow: none !important; border:0; position:relative; overflow:visible;
+  }
+  .bpmn-legend .lg-gw::before {
+    content:''; width:15px; height:15px; background: linear-gradient(#E5F2A3, var(--ci-lime));
+    position:absolute; top:50%; left:50%;
+    transform: translate(-50%, -50%) rotate(45deg); border-radius: 3px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.15);
+  }
+  .bpmn-legend .lg-sub {
+    background:#fff; color: var(--ci-green-deep); border-radius: 5px !important;
+    font-weight:800; font-size:13px; border: 2px dashed var(--ci-green-dark);
+  }
+  .bpmn-zoom {
+    display:flex; gap: 6px; align-items: center; font-size:11px; color: var(--ci-navy);
+  }
+  .bpmn-zoom button {
+    width:30px; height:30px; border-radius:8px; border:1px solid rgba(15,23,42,.12);
+    background:#fff; cursor:pointer; font-weight:700; color: var(--ci-navy-dark);
+    transition: all .15s;
+  }
+  .bpmn-zoom button:hover { background: var(--ci-green); color: #fff; border-color: var(--ci-green); }
+
+  .bpmn-canvas {
+    overflow-x: auto; overflow-y: hidden;
+    padding: 20px 0 14px;
+    background:
+      linear-gradient(#FBFDF8 0%, #EFF6E9 100%),
+      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(15,111,77,.05) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(15,111,77,.05) 40px);
+    background-blend-mode: normal, multiply, multiply;
+    scrollbar-width: thin;
+  }
+  .bpmn-canvas::-webkit-scrollbar { height: 12px; }
+  .bpmn-canvas::-webkit-scrollbar-track { background: var(--ci-green-soft); }
+  .bpmn-canvas::-webkit-scrollbar-thumb { background: linear-gradient(var(--ci-green), var(--ci-green-dark)); border-radius: 10px; }
+
+  .bpmn-canvas svg {
+    width: 100%; height: auto; min-width: 2400px; display:block;
+    transition: transform .3s ease;
+  }
+
+  /* Phase ribbon (top of SVG area) */
+  .bpmn-canvas .phase-label {
+    font-family:'Barlow'; font-weight: 800; font-size: 13px; letter-spacing: 2px;
+    text-transform: uppercase; fill: #fff;
+  }
+
+  /* nodes */
+  .bpmn-canvas .node { cursor: pointer; transition: transform .2s ease, filter .2s ease; transform-box: fill-box; transform-origin: center; }
+  .bpmn-canvas .node:hover { filter: drop-shadow(0 10px 20px rgba(15,23,42,.3)) brightness(1.08); }
+  .bpmn-canvas .node:hover .node-rect,
+  .bpmn-canvas .node:hover .node-gw,
+  .bpmn-canvas .node:hover .node-sub { stroke-width: 3; }
+  .bpmn-canvas .node:hover .node-circ { stroke-width: 4.5; }
+
+  .bpmn-canvas .lane-label {
+    font-family: 'Barlow'; font-weight: 800; font-size: 14px; letter-spacing: 2px; text-transform: uppercase;
+    fill: #fff;
+  }
+  .bpmn-canvas .lane-sub {
+    font-family: 'Inter'; font-weight: 500; font-size: 10px; letter-spacing: .5px;
+    fill: rgba(255,255,255,.7);
+  }
+  .bpmn-canvas .lane-bg { opacity: .055; }
+  .bpmn-canvas .lane-bg-alt { opacity: .08; }
+  .bpmn-canvas .node-label {
+    font-family: 'Inter'; font-size: 12px; font-weight: 600;
+    fill: #fff; pointer-events: none;
+  }
+  .bpmn-canvas .node-label.dark { fill: var(--ci-navy-dark); }
+  .bpmn-canvas .node-icon { pointer-events: none; }
+  .bpmn-canvas .sla-badge {
+    font-family: 'Barlow'; font-size: 9px; font-weight: 800; letter-spacing: .5px;
+    fill: #fff; pointer-events: none;
+  }
+  .bpmn-canvas .edge-label {
+    font-family: 'Barlow'; font-size: 11.5px; font-weight: 800; letter-spacing: .5px;
+    fill: var(--ci-green-deep); paint-order: stroke; stroke: #fff; stroke-width: 4px;
+    text-transform: uppercase;
+  }
+  .bpmn-canvas .connector {
+    fill: none; stroke: #1F4434; stroke-width: 2.2; stroke-linejoin: round; stroke-linecap: round;
+  }
+  .bpmn-canvas .connector.flow {
+    stroke-dasharray: 8 4;
+    animation: flowDash 1.4s linear infinite;
+  }
+  .bpmn-canvas .connector.dashed { stroke-dasharray: 5 5; opacity: .6; stroke: #6B8E3D; }
+  .bpmn-canvas .connector.alert  { stroke: #C8102E; stroke-width: 2.4; stroke-dasharray: 6 4; }
+
+  @keyframes flowDash { to { stroke-dashoffset: -24; } }
+
+  @keyframes pulseStart {
+    0%,100% { filter: drop-shadow(0 0 0 rgba(43,174,102,.0)); }
+    50%     { filter: drop-shadow(0 0 20px rgba(43,174,102,.95)); }
+  }
+  @keyframes pulseEnd {
+    0%,100% { filter: drop-shadow(0 0 0 rgba(200,16,46,.0)); }
+    50%     { filter: drop-shadow(0 0 20px rgba(200,16,46,.95)); }
+  }
+  .bpmn-canvas .start-evt { animation: pulseStart 2.4s ease-in-out infinite; }
+  .bpmn-canvas .end-evt   { animation: pulseEnd 2.4s ease-in-out infinite; }
+
+  /* Cycle divider header */
+  .cycle-divider {
+    display: flex; align-items: center; gap: 18px;
+    margin: 28px 28px 8px; padding: 16px 22px 16px 16px;
+    background: linear-gradient(110deg, var(--ci-green-soft) 0%, rgba(164,205,57,.16) 100%);
+    border-left: 5px solid var(--ci-green);
+    border-radius: 12px;
+  }
+  .cycle-num {
+    flex: 0 0 56px; height: 56px; border-radius: 14px;
+    background: linear-gradient(135deg, var(--ci-green-deep) 0%, var(--ci-green) 100%);
+    color: #fff; font-family: 'Barlow'; font-size: 30px; font-weight: 900;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 6px 18px rgba(15,111,77,.32), inset 0 0 0 2px rgba(255,255,255,.06);
+  }
+  .cycle-num.red {
+    background: linear-gradient(135deg, var(--ci-green) 0%, var(--ci-lime) 100%);
+    color: #06321F;
+    box-shadow: 0 6px 18px rgba(164,205,57,.35), inset 0 0 0 2px rgba(255,255,255,.18);
+  }
+  .cycle-info h3 {
+    margin: 0 0 4px; font-family: 'Barlow';
+    color: var(--ci-green-deep); font-size: 18px; font-weight: 800;
+    letter-spacing: -.01em;
+  }
+  .cycle-info p { margin: 0; font-size: 12.5px; color: #4B5563; line-height: 1.5; }
+  .cycle-info p b { color: var(--ci-green-deep); }
+
+  /* Inert gateways (no click handler attached, no hover scaling) */
+  .bpmn-canvas .bpmn-gw { cursor: default; pointer-events: none; }
+
+  .bpmn-tip {
+    padding: 14px 28px 22px;
+    font-size: 12.5px; color: #4B5563; text-align: center; font-style: italic;
+    border-top: 1px solid rgba(15,23,42,.05);
+    background: var(--ci-green-soft);
+  }
+  .bpmn-tip b { color: var(--ci-navy-dark); font-style: normal; }
+
+  /* Print */
+  @media print {
+    body { background: #fff; }
+    .toolbar, footer, .card-click-hint { display:none !important; }
+    .card { break-inside: avoid; box-shadow: none; border: 1px solid #CBD5E1; }
+    .process-map { grid-template-columns: repeat(2, 1fr); }
+    .bpmn-canvas { overflow: visible; }
+    .bpmn-canvas svg { min-width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="brand-row">
+      <div class="brand">
+        <div class="brand-logo" aria-label="Constructora Independencia">
+          <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wgARCADIAMgDASIAAhEBAxEB/8QAHAABAAIDAQEBAAAAAAAAAAAAAAYHBAUIAwEC/8QAHAEBAAIDAQEBAAAAAAAAAAAAAAUGAwQHAgEI/9oADAMBAAIQAxAAAAGAjd5mAAAAAAAAAAAAAAAAAAPp8ZeI+g+AAAAAAAAAZllaXqvDYKsn+yh+KwS+G6adlO1z13B/cdygNioAAAAAAAAb6Ww+9McxQG16p3PiR5ZhXbfj898myG26q9adUjNXwAAAAABmePWGPfmedV8qdV61wHlim/V4e4g84g/rX5QG5zwAAAAABdFL3RRrJnRmbub26F2ZF4ncIaVRryYtS85TFpTfppB5xB9zFygNzngAAAAAC6KXuijWTfjkd618TlkTskAErGXnKYtKeiTiDziD7mLlAbnPAAAAAAF0UvdFGsm/HI71r4nLInZIAJWMvOUxaU9EnEHnEH3MXKA3OeAAAAAALope6KNZN+OR3rXxOWRaxwH4bLYbWvaMp5vlvUPVxwfbandz8oDb5+AAAAAAuil7oo1k345Hevz9+voPinI3JI3+guWtjrknqA+AAAAAAN3pGDLYknpRVprobGonxhpC2I1C1jiMjHLJEB6+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAf/xAAoEAAABQQBBAEFAQAAAAAAAAACAwQFBgABEDU2BzA0QBETFSAhYBT/2gAIAQEAAQUC/mLfu5yQ9Nb1EiQ5cei6drj6RdPG8ikbWkb7CAEYVsOaltLemt6c4u4tJfowjklCFYFlsvakNJuoLYcNG5pHC1TXjXosjn9ncVs/c1NKl6leJFG3JfSmCuycByY9CYiljogpynBjq0+izNgnhwRdOkJNImZE3ZNJAeBbCWpZT/BvtCL0YRyT8prxrvf4z/o4hHJMGGgKCSeBQXia8a7zDqVDcmVUoixA6YW0xjeFEyLDSmTLlFGGjOFGdPia8a7zDqcL/GzGdPia8a7zDqcL/GzGdPia8a7zDqcL/GzGdPia8a7zDqcL/GzGdPia8a7zDqcL/GzGdPia8a7zDqcL/GzGdPia8a7zDqcL/GCAQ7gQGioDYG1GytaxLEPUhOZSGQtzjU1413mHU4EGwrWt8ZkG1xZxVWTd5h1P5SDa+ikeFSIKeV0ne0airX+bHKiU1HyZKVR8oUDo88akz1CzzCbX/d/5j//EACsRAAECAwYGAgMBAAAAAAAAAAECAwAEcQUQESEwMxITMTI0wSJBIEBCUP/aAAgBAwEBPwH9Qgjrp2fJNTCOY5Abl5YY5COOXmcsjEzZzHApacsNKUbm3EcLJwTCLIxzeXjC7IbO2rCHJedYQRxYp0Akq6C6yNg1vmdldDoWD5CqexDsnLv7iBDjYkTy2enWCpSuphvsETOyuh0LB8hVPYun90Uub7BEzsrodCwfIVT2Lp/dFLm+wRM7K6HQsHyFU9i6fzdFIRKur+oTOsIPKUcCMofUlbCyk/R0LB8hVPY/Cd8lypgKI6aDbq2jxNnAw1bUy33fKFW/8fi3nWHbWm3f6wpBJUcT/gf/xAAxEQABAQMKAwcFAAAAAAAAAAABAgADBAUGEBESITAxNHEzcsETMkFCYbHhIkBQUZH/2gAIAQIBAT8B+/Wohry14YLOEqyM27T9N2jApOApaUd41UPM2yYGu8MM8Cd+iRzdC0NKkbCcF6R7fxoeXIyKdVqIr2Z4+ePe+qtoTTu9gwzwJ36JHN0NEncI70Qmnd7BhngTv0SOboaJO4R3ohNO72DDPAnfokc3Q0ScanJ3ZcW5R5mghahXSh4gezDPAnfokc3Q0V+FEmaFzyj2wXzh1EJsPkhQ9WiZrQD693Wg+nyyJnC39b67b5aHm5J0P5LR9b/hkpCBZSKh+A//xAA1EAABAgIGBwYGAwEAAAAAAAABAgMABBAREiGBsRMgIjBRgrIjMUBCYXEkQVJgYnIUMpGh/9oACAEBAAY/AvtioXmAXmXGge62kjwqWWEFx1XckQC+43Ljh3mK31OTB9TUI+Hlm2fVKb4KVAKSfkYNcsGVcWtmCZWa5XBBcfZ7Id7iTWPBS3scqK1EAcTBtTSXVcGtqKl6Rn1UmK5eYbe/VV9E5y9Q8E3NWNJYr2YIasSyfxFZiuYfceP5GuBopRyz9ShZH/YtBpL3o2q+BpW3GFjutCyYARNKcT9Lu1D0o9LpCl1baD6+CblUrDZV5jFcw45MHh/UR8PLNtn6gL/9psuIStPBQrgkMaBXFo1Q7NtzOkbR5VC/wUt7HLXnOXqG/DuiUWz5gKZb2OVNpaghPFRi22oLRxFM5y9Q37GOcdoyknjVfFbTimzwN8NTT6gWEV1qTHYsFXqq6LnA0PwEWnFqWrio1wzjnTOcvUN+xjnSrUZxzpnOXqG/YxzpVqM450znL1DfsY50q1Gcc6Zzl6hv2Mc6VajOOdM5y9Q37GOdKtRnHOmc5eob9jHOlWozjnTOcvUN+xjnSqNkE+0Xiz7xtKJ9oVLs2Fy6e5ChAE1LraPFF4gaGbbKj5SajE5y9Q37GOdNRFYi66l3ClUv/Ic0Cu9squ37GOeu7h4IJbXsDykR2zOKIueCTwXdF18dq6lHuY2LTp9Lo7JCWx/sFxxVpZ+fhakOKR+pqiv7Z//EACkQAAECBQIFBAMAAAAAAAAAAAEAERAhMaGxMFEgQEFhkXGBwfBg4fH/2gAIAQEAAT8h/GAIgElAOqrCRPvnlfVboFuRECpj2DsQTM6UyBepqVKRgQuCnYWfcBKyEm+3ywnBtMw8l9jugWiuZIwCaAB95ErooGN5PBZegXCIeoqIWHJDp7ADmdwydAZ/cKFyGZA4P2Ccz5+0ICSNMEh5ZCorVfsIcBHY3ndA/OAlJAae3JOoxLLgMHTX3JYECDO3PmnEkMdRgPsVOwv4lEaQbdnOQPnkvsd3HYa4kKew8CE4fY7okQc2AQseKUzGw1xY5E4E+7XkE6eiAQTGdQmJSUs72sQIgj6NHyu94gSu80bDXFjkjh54LvNGw1xY5I4eeC7zRsNcWOSOHngu80bDXFjkjh54LvNGw1xY5I4eeC7zRsNcWOSOHngu80bDXFjkjh5TSK9iZ2A7lWp9ikvCaM4czW5KjKZH6k2VZa4sckWEtgoAsADYRtMBCqcEMAga3oaa9jk47TAck8VpPgEGQb7nwmMEaIHiAbhDH7G0fCfgPbGXT6OgiZkS1WlypoFGoK5ESEXJqT+M/wD/2gAMAwEAAgADAAAAEPvvvvvvvvvvvvvvvvvvvvPvvvvvvvvvv4LBPvvvvvvvvvNF5/vvvvvvvNv/AP377777777l7e3z77777776n1T7z77777776n1T7z77777776n1fTrX7777776n0z1X37777776y6h1/wC++++++++++++++++++++++++++++++//EACcRAAIBAgUEAgMBAAAAAAAAAAERIQChEDAxUWFBkbHwgdFAUMHh/9oACAEDAQE/EPw9aKoEcs9YSCk0OnzekYOUp9zNAOXDB/2hxZICYMQOXlEcsktTHzTLhcfZ+qnCFzP1QNQi5cKYPG2Q+cVJWF08CiVJoEGRXqNjkXWh4wd0j3CNaMi6pkx2itcjVqK9Rsci64Fo8nC1Feo2ORdcC0eThaivUbHIuuABCGqeTWjKOYopfLPRiNaCQI6BfTIuuAg2pw9NuaZuQ8hnO4CqVBQ5CPcL+0XyEPE2qMCdgV5N6ODsnUn9B//EACURAQABAgUFAAMBAAAAAAAAAAERADEQITBhoUFRkbHwQFBxwf/aAAgBAgEBPxD8SRtpqwVO/UbdTQdJJN1MLKF1KXtnoRUUmCUJexN3FUEtARJGrWhwNcIAHSZ8knFRhAxJmbd5PBSMt/T/AJavpdirWhwOHznow+l2KtaHA4fOejD6XYq1ocDhghcpeir/ACds6Y1kryKCGdDgcOUZssPr9lQOhtukCf3PrvUmG4SeJcJRln7Yr5QeGold4/TLhQUAEAZAHQOh+g//xAAnEAEAAQIFBAEFAQAAAAAAAAABEQAhMUBRcYFBkaGxYRAgUGDB0f/aAAgBAQABPxD9Yc4MClWgdaPpgik9EE5Wb2k8GBLdQINWnkzChHsWHlqIlYzPy+aLuIkUtnuLRMUhptEbNayp9tUgGMfDf2SiUwLkqBOCSoXMpEI48KBqrYqHUpxz8dTSw+aezVmptDWCcS88HuBU3yag7g4oZRLpeoEAgtHd9VOQQWNzBwVpLe2dbEm01itZw6iXFSB6QYnVIPJViBZgm9BY5wQMivXQ9clfOfECKx8FQOZlAX4S5OSisxgCm8i7/Up6xupAlSk9XCPf2BRIpWdAWEYsj8REUMDIVMYoqkxccYpAkufbExmuEPlYpJCo6YGGHrfJKHTfXw4Buw+akAWAn8WiAVuUKmrdSpp3gH7BLUiYLCDdL2ina3j34XLIFBvyvRmUCg35XozKBQb8r0ZlAoN+V6MygUG/K9GZQKDflejMoFBvyvRRDTKSKNSbc7FADpixQA3INgQFG6realokA02zDFdCbr00trxNIbmSg2vcsTkaGBGAQfbWQENyoSvTEAEIlwNo/EG6w/ZsVKZY6l160pUhZm8y/wBrcDzd23miTDcWR5o+LbgU2xPBUQYwZ3m7xU/mbOzzaoaKRwWCCxbKIONYMvxN0NIidKJV+WsP1j//2Q==" alt="Constructora e Inmobiliaria Independencia"/>
+        </div>
+        <div>
+          <div class="brand-name">CONSTRUCTORA INDEPENDENCIA</div>
+          <div class="brand-sub">Subgerencia · Servicio al Cliente</div>
+        </div>
+      </div>
+      <div class="doc-meta">
+        <div><b>Documento</b>Mapa de Procesos v1.0</div>
+        <div><b>Fuente</b>Entrevista Subgerencia SAC</div>
+      </div>
+    </div>
+    <h1>Mapa de Procesos · <span>Servicio al Cliente</span></h1>
+    <p class="hero-sub">
+      Flujo completo del ciclo de atención al propietario — desde la pre-entrega de la vivienda hasta el cierre de la postventa y la medición de satisfacción. Haz clic en cualquier tarjeta para ver el detalle del proceso.
+    </p>
+    <div class="kpi-row">
+      <div class="kpi">
+        <div class="kpi-val">32.000<small>viviendas</small></div>
+        <div class="kpi-lbl">Universo administrado</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-val">17.000<small>activas</small></div>
+        <div class="kpi-lbl">Clientes en garantía</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-val">7 días</div>
+        <div class="kpi-lbl">SLA por etapa</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-val">72%<small>2025</small></div>
+        <div class="kpi-lbl">Cierre conforme promedio</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- TOOLBAR -->
+<div class="toolbar">
+  <div class="toolbar-inner">
+    <div class="tb-title">Mapa de procesos</div>
+    <span class="legend-hint">Filtra por área:</span>
+    <div class="filter-chips" id="filterChips">
+      <div class="chip active" data-filter="all">Todos</div>
+      <div class="chip" data-filter="Postventa"><i style="background:var(--tag-postventa)"></i>Postventa</div>
+      <div class="chip" data-filter="Operaciones"><i style="background:var(--tag-operaciones)"></i>Operaciones</div>
+      <div class="chip" data-filter="Calidad"><i style="background:var(--tag-calidad)"></i>Calidad</div>
+      <div class="chip" data-filter="Comercial"><i style="background:var(--tag-comercial)"></i>Comercial</div>
+      <div class="chip" data-filter="Sistema"><i style="background:var(--tag-sistema)"></i>Sistema</div>
+      <div class="chip" data-filter="Cliente"><i style="background:var(--tag-cliente)"></i>Cliente</div>
+      <div class="chip" data-filter="Gerencia"><i style="background:var(--tag-gerencia)"></i>Gerencia</div>
+    </div>
+  </div>
+</div>
+
+<main>
+  <div class="map-wrap">
+
+    <div class="map-header">
+      <span class="hint-line"></span>
+      <h2>Ciclo completo de atención al propietario</h2>
+      <p>&mdash; 6 etapas · 24 procesos · flujo end-to-end</p>
+    </div>
+
+    <!-- ============ PROCESS MAP ============ -->
+    <div class="process-map" id="processMap">
+
+      <!-- ========== STAGE 1 ========== -->
+      <div class="stage" data-s="1">
+        <div class="stage-head">
+          <div class="stage-num">1</div>
+          <div class="stage-title">Pre-Entrega<br><span style="font-weight:600; font-size:12px; color:#6B7280">Fichaje de Vivienda</span></div>
+        </div>
+        <div class="stage-body">
+
+          <div class="card" style="--card-accent: var(--tag-operaciones)" data-area="Operaciones" data-proc="FIC-001">
+            <span class="card-click-hint">VER →</span>
+            <div class="card-code">PRO-FIC-001</div>
+            <div class="card-title">Fichaje de Operaciones</div>
+            <span class="card-tag" style="--tag-color:var(--tag-operaciones); --tag-bg:var(--tag-operaciones-bg)">Operaciones</span>
+          </div>
+
+          <div class="card" style="--card-accent: var(--tag-calidad)" data-area="Calidad" data-proc="FIC-002">
+            <span class="card-click-hint">VER →</span>
+            <div class="card-code">PRO-FIC-002</div>
+            <div class="card-title">Fichaje de Control Calidad</div>
+            <span class="card-tag" style="--tag-color:var(--tag-calidad); --tag-bg:var(--tag-calidad-bg)">Calidad</span>
+          </div>
+
+          <div class="card" style="--card-accent: var(--tag-comercial)" data-area="Comercial" data-proc="FIC-003">
+            <span class="card-click-hint">VER →</span>
+            <div class="card-code">PRO-FIC-003</div>
+            <div class="card-title">Fichaje Comercial (estético)</div>
+            <span class="card-tag" style="--tag-color:var(--tag-comercial); --tag-bg:var(--tag-comercial-bg)">Comercial</span>
+          </div>
+
+          <div class="card" style="--card-accent: var(--tag-sistema)" data-area="Sistema" data-proc="FIC-004">
+            <span class="card-click-hint">VER →</span>
+            <div class="card-code">PRO-FIC-004</div>
+            <div class="card-title">Torre de Control · Coordinadora</div>
+            <span class="card-tag" style="--tag-color:var(--tag-sistema); --tag-bg:var(--tag-sistema-bg)">Sistema</span>
+          </div>
+
+        </div>
+        <div class="stage-footer">
+          <span class="sys-badge pi">Sist. Integrado</span>
+          <span class="sys-badge mv">App Móvil</span>
+        </div>
+      </div>
+
+      <!-- ========== STAGE 2 ========== -->
+      <div class="stage" data-s="2">
+        <div class="stage-head">
+          <div class="stage-num">2</div>
+          <div class="stage-title">Entrega al Propietario<br><span style="font-weight:600; font-size:12px; color:#6B7280">Recepción de la vivienda</span></div>
+        </div>
+        <div class="stage-body">
+
+          <div class="card" style="--card-accent: var(--tag-comercial)" data-area="Comercial" data-proc="ENT-001">
+            <span class="card-click-hint">VER →</span>
+            <div class="card-code">PRO-ENT-001</div>
+            <div class="card-title">Agendamiento e Inspección</div>
+            <span class="card-tag" style="--tag-color:var(--tag-comercial); --tag-bg:var(--tag-comercial-bg)">Comercial</span>
+          </div>
+
+          <div class="card" style="--card-accent: var(--tag-operaciones)" data-area="Operaciones" data-proc="ENT-002">
+            <span class="card-click-hint">VER →</span>
+            <div class="card-code">PRO-ENT-002</div>
+            <div class="card-title">Retrabajo de Observaciones</div>
+            <span class="card-tag" style="--tag-color:var(--tag-operaciones); --tag-bg:var(--tag-operaciones-bg)">Operaciones</span>
+          </div>
+
+          <div class="card" style="--card-accent: var(--tag-comercial)" data-area="Comercial" data-proc="ENT-003">
+            <span class="card-click-hint">VER →</span>
+            <div class="card-code">PRO-ENT-003</div>
+            <div class="card-title">Lectura de Medidores</div>
+            <span class="card-tag" style="--tag-color:var(--tag-comercial); --tag-bg:var(--tag-comercial-bg)">Comercial</span>
+          </div>
+
+          <div class="card" style="--card-accent: var(--tag-legal)" data-area="Legal" data-proc="ENT-004">
+            <span class="card-click-hint">VER →</span>
+            <div class="card-code">PRO-ENT-004</div>
+            <div class="card-title">Firma Acta + Entrega Manual</div>
+            <span class="card-tag" style="--tag-color:var(--tag-legal); --tag-bg:var(--tag-legal-bg)">Legal</span>
+          </div>
+
+          <div class="card" style="--card-accent: var(--tag-gerencia)" data-area="Gerencia" data-proc="ENT-005">
+            <span class="card-click-hint">VER →</span>
+            <div class="card-code">PRO-ENT-005</div>
+            <div class="card-title">Entrega Notarial (excepción)</div>
+            <span class="card-tag" style="--tag-color:var(--tag-gerencia); --tag-bg:var(--tag-gerencia-bg)">Gerencia</span>
+          </div>
+
+        </div>
+        <div class="stage-footer">
+          <span class="sys-badge pi">Sist. Integrado</span>
+          <span class="sys-badge sa">Notaría</span>
+        </div>
+      </div>
+
+      <!-- ========== STAGE 3 ========== -->
+      <div class="stage" data-s="3">
+        <div class="stage-head">
+          <div class="stage-num">3</div>
+          <div class="stage-title">Ingreso de Solicitud<br><span style="font-weight:600; font-size:12px; color:#6B7280">4 canales de atención</span></div>
+        </div>
+        <div class="stage-body">
+
+          <div class="card" style="--card-accent: var(--tag-postventa)" data-area="Postventa" data-proc="ING-001">
+            <span class="card-click-hint">VER →</span>
+            <div class="card-code">PRO-ING-001</div>
+            <div class="card-title">Canal Presencial / Telefónico</div>
+            <span class="card-tag" style="--tag-color:var(--tag-postventa); --tag-bg:var(--tag-postventa-bg)">Postventa</span>
+          </div>
+
+          <div class="card" style="--card-accent: var(--tag-cliente)" data-area="Cliente" data-proc="ING-002">
+            <span class="card-click-hint">VER →</span>
+            <div class="card-code">PRO-ING-002</div>
+            <div class="card-title">Portal Cliente · Autogestión</div>
+            <span class="card-tag" style="--tag-color:var(--tag-cliente); --tag-bg:var(--tag-cliente-bg)">Cliente</span>
+          </div>
+
+          <div class="card" style="--card-accent: var(--tag-postventa)" data-area="Postventa" data-proc="ING-003">
+            <span class="card-click-hint">VER →</span>
+            <div class="card-code">PRO-ING-003</div>
+            <div class="card-title">Canal Email / Web</div>
+            <span class="card-tag" style="--tag-color:var(--tag-postventa); --tag-bg:var(--tag-postventa-bg)">Postventa</span>
+          </div>
+
+          <div class="card" style="--card-accent: var(--tag-sistema)" data-area="Sistema" data-proc="ING-004">
+            <span class="card-click-hint">VER →</span>
+            <div class="card-code">PRO-ING-004</div>
+            <div class="card-title">Validación de Datos (RUT+Casa)</div>
+            <span class="card-tag" style="--tag-color:var(--tag-sistema); --tag-bg:var(--tag-sistema-bg)">Sistema</span>
+          </div>
+
+        </div>
+        <div class="stage-footer">
+          <span class="sys-badge pi">Sist. Integrado</span>
+          <span class="sys-badge po">Portal Cliente</span>
+        </div>
+      </div>
+
+      <!-- ========== STAGE 4 ========== -->
+      <div class="stage" data-s="4">
+        <div class="stage-head">
+          <div class="stage-num">4</div>
+          <div class="stage-title">Gestión del Ticket<br><span style="font-weight:600; font-size:12px; color:#6B7280">Orquestación y asignación</span></div>
+        </div>
+        <div class="stage-body">
+
+          <div class="card" style="--card-accent: var(--tag-sistema)" data-area="Sistema" data-proc="TKT-001">
+            <span class="card-click-hint">VER →</span>
+            <div class="card-code">PRO-TKT-001</div>
+            <div class="card-title">Generación de Pre-Ticket</div>
+            <span class="card-tag" style="--tag-color:var(--tag-sistema); --tag-bg:var(--tag-sistema-bg)">Sistema</span>
+          </div>
+
+          <div class="card" style="--card-accent: var(--tag-sistema)" data-area="Sistema" data-proc="TKT-002">
+            <span class="card-click-hint">VER →</span>
+            <div class="card-code">PRO-TKT-002</div>
+            <div class="card-title">Asignación Round-Robin</div>
+            <span class="card-tag" style="--tag-color:var(--tag-sistema); --tag-bg:var(--tag-sistema-bg)">Sistema</span>
+          </div>
+
+          <div class="card" style="--card-accent: var(--tag-postventa)" data-area="Postventa" data-proc="TKT-003">
+            <span class="card-click-hint">VER →</span>
+            <div class="card-code">PRO-TKT-003</div>
+            <div class="card-title">Conversión a Ticket (≤24h)</div>
+            <span class="card-tag" style="--tag-color:var(--tag-postventa); --tag-bg:var(--tag-postventa-bg)">Postventa</span>
+          </div>
+
+          <div class="card" style="--card-accent: var(--ci-coral)" data-area="Postventa" data-proc="TKT-004">
+            <span class="card-click-hint">VER →</span>
+            <div class="card-code">PRO-TKT-004</div>
+            <div class="card-title">Marcar Postventa Crítica</div>
+            <span class="card-tag" style="--tag-color:var(--ci-coral); --tag-bg:var(--ci-coral-soft)">Urgente</span>
+          </div>
+
+        </div>
+        <div class="stage-footer">
+          <span class="sys-badge pi">Sist. Integrado</span>
+        </div>
+      </div>
+
+      <!-- ========== STAGE 5 ========== -->
+      <div class="stage" data-s="5">
+        <div class="stage-head">
+          <div class="stage-num">5</div>
+          <div class="stage-title">Ejecución en Terreno<br><span style="font-weight:600; font-size:12px; color:#6B7280">Diagnóstico y reparación</span></div>
+        </div>
+        <div class="stage-body">
+
+          <div class="card" style="--card-accent: var(--tag-calidad)" data-area="Calidad" data-proc="EJE-001">
+            <span class="card-click-hint">VER →</span>
+            <div class="card-code">PRO-EJE-001</div>
+            <div class="card-title">Visita Técnica y Diagnóstico</div>
+            <span class="card-tag" style="--tag-color:var(--tag-calidad); --tag-bg:var(--tag-calidad-bg)">Calidad</span>
+          </div>
+
+          <div class="card" style="--card-accent: var(--tag-postventa)" data-area="Postventa" data-proc="EJE-002">
+            <span class="card-click-hint">VER →</span>
+            <div class="card-code">PRO-EJE-002</div>
+            <div class="card-title">Emisión de Orden de Trabajo</div>
+            <span class="card-tag" style="--tag-color:var(--tag-postventa); --tag-bg:var(--tag-postventa-bg)">Postventa</span>
+          </div>
+
+          <div class="card" style="--card-accent: var(--tag-operaciones)" data-area="Operaciones" data-proc="EJE-003">
+            <span class="card-click-hint">VER →</span>
+            <div class="card-code">PRO-EJE-003</div>
+            <div class="card-title">Ejecución por Contratista</div>
+            <span class="card-tag" style="--tag-color:var(--tag-operaciones); --tag-bg:var(--tag-operaciones-bg)">Operaciones</span>
+          </div>
+
+          <div class="card" style="--card-accent: var(--tag-gerencia)" data-area="Gerencia" data-proc="EJE-004">
+            <span class="card-click-hint">VER →</span>
+            <div class="card-code">PRO-EJE-004</div>
+            <div class="card-title">Excepción Fuera de Garantía</div>
+            <span class="card-tag" style="--tag-color:var(--tag-gerencia); --tag-bg:var(--tag-gerencia-bg)">Gerencia</span>
+          </div>
+
+        </div>
+        <div class="stage-footer">
+          <span class="sys-badge mv">App Móvil</span>
+          <span class="sys-badge pi">Sist. Integrado</span>
+        </div>
+      </div>
+
+      <!-- ========== STAGE 6 ========== -->
+      <div class="stage" data-s="6">
+        <div class="stage-head">
+          <div class="stage-num">6</div>
+          <div class="stage-title">Cierre y Medición<br><span style="font-weight:600; font-size:12px; color:#6B7280">Satisfacción y reporte</span></div>
+        </div>
+        <div class="stage-body">
+
+          <div class="card" style="--card-accent: var(--tag-postventa)" data-area="Postventa" data-proc="CIE-001">
+            <span class="card-click-hint">VER →</span>
+            <div class="card-code">PRO-CIE-001</div>
+            <div class="card-title">Firma Acta Conforme</div>
+            <span class="card-tag" style="--tag-color:var(--tag-postventa); --tag-bg:var(--tag-postventa-bg)">Postventa</span>
+          </div>
+
+          <div class="card" style="--card-accent: var(--tag-cliente)" data-area="Cliente" data-proc="CIE-002">
+            <span class="card-click-hint">VER →</span>
+            <div class="card-code">PRO-CIE-002</div>
+            <div class="card-title">Encuesta de Satisfacción</div>
+            <span class="card-tag" style="--tag-color:var(--tag-cliente); --tag-bg:var(--tag-cliente-bg)">Cliente</span>
+          </div>
+
+          <div class="card" style="--card-accent: var(--tag-sistema)" data-area="Sistema" data-proc="CIE-003">
+            <span class="card-click-hint">VER →</span>
+            <div class="card-code">PRO-CIE-003</div>
+            <div class="card-title">Informe Semanal Automático</div>
+            <span class="card-tag" style="--tag-color:var(--tag-sistema); --tag-bg:var(--tag-sistema-bg)">Sistema</span>
+          </div>
+
+          <div class="card" style="--card-accent: var(--tag-gerencia)" data-area="Gerencia" data-proc="CIE-004">
+            <span class="card-click-hint">VER →</span>
+            <div class="card-code">PRO-CIE-004</div>
+            <div class="card-title">Tablero del Directorio</div>
+            <span class="card-tag" style="--tag-color:var(--tag-gerencia); --tag-bg:var(--tag-gerencia-bg)">Gerencia</span>
+          </div>
+
+        </div>
+        <div class="stage-footer">
+          <span class="sys-badge pi">Sist. Integrado</span>
+          <span class="sys-badge en">Encuestas</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ============ BPMN INTERACTIVE FLOW ============ -->
+    <section class="bpmn-section" id="bpmnFlow">
+      <div class="bpmn-header">
+        <div class="bpmn-header-left">
+          <span class="eyebrow">◆ Proceso BPMN · Dos Ciclos de Vida</span>
+          <h2>Flujograma <span>Interactivo · Pre-Entrega &amp; Postventa</span></h2>
+          <p>Dos ciclos claramente separados en el tiempo: <b>Ciclo A · Pre-Entrega</b> (la casa pasa por fichaje y entrega, todavía sin cliente en posesión) y <b>Ciclo B · Postventa</b> (la casa ya está en poder del propietario y se levanta un reclamo). Cada nodo abre la descripción única de ese proceso en particular.</p>
+        </div>
+        <div class="bpmn-kpis">
+          <div class="bpmn-kpi"><b>2</b><small>Ciclos</small></div>
+          <div class="bpmn-kpi"><b>35+</b><small>Actividades</small></div>
+          <div class="bpmn-kpi"><b>8</b><small>Decisiones</small></div>
+          <div class="bpmn-kpi"><b>4</b><small>Cierres distintos</small></div>
+        </div>
+      </div>
+
+      <div class="bpmn-subbar">
+        <div class="bpmn-legend">
+          <div class="lg-item"><span class="lg-icon lg-start"></span>Inicio</div>
+          <div class="lg-item"><span class="lg-icon lg-end"></span>Fin</div>
+          <div class="lg-item"><span class="lg-icon lg-task"></span>Tarea</div>
+          <div class="lg-item"><span class="lg-icon lg-gw"></span>Decisión</div>
+          <div class="lg-item"><span class="lg-icon lg-sub">+</span>Subproceso</div>
+          <div class="lg-item" style="margin-left:10px; padding-left:14px; border-left:1px solid rgba(0,0,0,.1)">
+            <svg width="24" height="3"><line x1="0" y1="1.5" x2="24" y2="1.5" stroke="#1F4434" stroke-width="2" stroke-dasharray="6 3"/></svg>
+            Flujo principal
+          </div>
+          <div class="lg-item">
+            <svg width="24" height="3"><line x1="0" y1="1.5" x2="24" y2="1.5" stroke="#5C7A1A" stroke-width="2" stroke-dasharray="4 4"/></svg>
+            Excepción
+          </div>
+          <div class="lg-item">
+            <svg width="24" height="3"><line x1="0" y1="1.5" x2="24" y2="1.5" stroke="#C8102E" stroke-width="2" stroke-dasharray="4 3"/></svg>
+            Loop / reagendar
+          </div>
+        </div>
+        <div class="bpmn-zoom">
+          <button onclick="bpmnZoom(-0.1)" title="Zoom out">−</button>
+          <button onclick="bpmnZoom(0)" title="Reset">◎</button>
+          <button onclick="bpmnZoom(0.1)" title="Zoom in">+</button>
+        </div>
+      </div>
+
+      <!-- ============ CYCLE A · PRE-ENTREGA ============ -->
+      <div class="cycle-divider">
+        <div class="cycle-num">A</div>
+        <div class="cycle-info">
+          <h3>Ciclo A · Pre-Entrega de la Casa</h3>
+          <p>La constructora termina la casa y la pasa por <b>tres fichajes</b> (Operaciones, Calidad, Comercial) antes de invitar al propietario a la entrega. El cliente todavía no es dueño — su firma sólo aparece al final, cuando recibe llaves, manual y lectura de medidores. Si tras tres intentos no acepta, la entrega se hace por notaría.</p>
+        </div>
+      </div>
+
+      <div class="bpmn-canvas" id="bpmnCanvasA">
+        <svg id="bpmnSvgA" viewBox="0 0 2200 660" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Flujograma BPMN del Ciclo Pre-Entrega">
+          <defs>
+            <!-- Arrow markers -->
+            <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+              <path d="M 0 1 L 9 5 L 0 9 L 2 5 z" fill="#1F4434"/>
+            </marker>
+            <marker id="arrGold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+              <path d="M 0 1 L 9 5 L 0 9 L 2 5 z" fill="#6B8E3D"/>
+            </marker>
+            <marker id="arrRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+              <path d="M 0 1 L 9 5 L 0 9 L 2 5 z" fill="#C8102E"/>
+            </marker>
+
+            <!-- Filters -->
+            <filter id="sSh" x="-20%" y="-20%" width="140%" height="170%">
+              <feDropShadow dx="0" dy="3" stdDeviation="3.5" flood-color="#06321F" flood-opacity=".28"/>
+            </filter>
+            <filter id="lgSh" x="-30%" y="-30%" width="160%" height="180%">
+              <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#06321F" flood-opacity=".35"/>
+            </filter>
+
+            <!-- Task gradients (paleta verde corporativa) -->
+            <linearGradient id="gCli" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#C7E07A"/><stop offset="100%" stop-color="#7FA827"/></linearGradient>
+            <linearGradient id="gSac" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3DA37A"/><stop offset="100%" stop-color="#0F6F4D"/></linearGradient>
+            <linearGradient id="gTec" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1F8B66"/><stop offset="100%" stop-color="#0A4A33"/></linearGradient>
+            <linearGradient id="gGer" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#E5DC9A"/><stop offset="100%" stop-color="#A48B30"/></linearGradient>
+            <linearGradient id="gGw"  x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F2F8C6"/><stop offset="100%" stop-color="#A4CD39"/></linearGradient>
+            <radialGradient id="gStart" cx="40%" cy="35%"><stop offset="0%" stop-color="#9DE9B8"/><stop offset="100%" stop-color="#1F8B4E"/></radialGradient>
+            <radialGradient id="gEnd"   cx="40%" cy="35%"><stop offset="0%" stop-color="#F26A7E"/><stop offset="100%" stop-color="#8C0C1F"/></radialGradient>
+
+            <!-- Lane header gradients (verde corporativo) -->
+            <linearGradient id="lnCli" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#A4CD39"/><stop offset="100%" stop-color="#5C7A1A"/></linearGradient>
+            <linearGradient id="lnSac" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0F6F4D"/><stop offset="100%" stop-color="#06321F"/></linearGradient>
+            <linearGradient id="lnTec" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0A4A33"/><stop offset="100%" stop-color="#06321F"/></linearGradient>
+            <linearGradient id="lnGer" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#C9A04E"/><stop offset="100%" stop-color="#5E471A"/></linearGradient>
+
+            <!-- Phase ribbons (verdes corporativos) -->
+            <linearGradient id="phOne" x1="0" x2="1"><stop offset="0%" stop-color="#A4CD39"/><stop offset="100%" stop-color="#7FA827"/></linearGradient>
+            <linearGradient id="phTwo" x1="0" x2="1"><stop offset="0%" stop-color="#3DA37A"/><stop offset="100%" stop-color="#0F6F4D"/></linearGradient>
+            <linearGradient id="phThr" x1="0" x2="1"><stop offset="0%" stop-color="#0F6F4D"/><stop offset="100%" stop-color="#0A4A33"/></linearGradient>
+            <linearGradient id="phFou" x1="0" x2="1"><stop offset="0%" stop-color="#0A4A33"/><stop offset="100%" stop-color="#06321F"/></linearGradient>
+            <linearGradient id="phFiv" x1="0" x2="1"><stop offset="0%" stop-color="#C9A04E"/><stop offset="100%" stop-color="#7A5A1F"/></linearGradient>
+
+            <!-- Subprocess patterns -->
+            <pattern id="ptSub" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+              <rect width="8" height="8" fill="#F4FAEB"/>
+              <circle cx="4" cy="4" r="1" fill="#A4CD39" opacity=".4"/>
+            </pattern>
+          </defs>
+
+
+          <!-- ============ PRE-ENTREGA · PHASE RIBBONS ============ -->
+          <g id="phasesA">
+            <rect x="200" y="14" width="540" height="42" rx="10" fill="url(#phOne)" filter="url(#sSh)"/>
+            <text x="470" y="42" text-anchor="middle" class="phase-label">◆ A · FICHAJE TÉCNICO</text>
+
+            <rect x="750" y="14" width="240" height="42" rx="10" fill="url(#phTwo)" filter="url(#sSh)"/>
+            <text x="870" y="42" text-anchor="middle" class="phase-label">◆ B · FICHAJE COMERCIAL</text>
+
+            <rect x="1000" y="14" width="700" height="42" rx="10" fill="url(#phThr)" filter="url(#sSh)"/>
+            <text x="1350" y="42" text-anchor="middle" class="phase-label">◆ C · ENTREGA AL CLIENTE</text>
+
+            <rect x="1710" y="14" width="380" height="42" rx="10" fill="url(#phFiv)" filter="url(#sSh)"/>
+            <text x="1900" y="42" text-anchor="middle" class="phase-label">◆ D · CIERRE PRE-ENTREGA</text>
+          </g>
+
+          <!-- ============ SWIMLANES ============ -->
+          <rect x="20" y="70" width="2160" height="580" fill="none" stroke="#0F6F4D" stroke-width="1.8" rx="12"/>
+
+          <!-- Lane 1: OBRA / PRODUCCIÓN -->
+          <rect x="20" y="70" width="150" height="120" fill="url(#lnGer)"/>
+          <rect x="170" y="70" width="2010" height="120" fill="#C9A04E" class="lane-bg-alt"/>
+          <text x="95" y="135" text-anchor="middle" transform="rotate(-90, 95, 135)" class="lane-label">OBRA</text>
+          <text x="118" y="135" text-anchor="middle" transform="rotate(-90, 118, 135)" class="lane-sub">Producción</text>
+          <line x1="20" y1="190" x2="2180" y2="190" stroke="#0F6F4D" stroke-width="1.5"/>
+
+          <!-- Lane 2: CALIDAD + COMERCIAL -->
+          <rect x="20" y="190" width="150" height="160" fill="url(#lnTec)"/>
+          <rect x="170" y="190" width="2010" height="160" fill="#0A4A33" class="lane-bg-alt"/>
+          <text x="95" y="270" text-anchor="middle" transform="rotate(-90, 95, 270)" class="lane-label">CALIDAD</text>
+          <text x="118" y="270" text-anchor="middle" transform="rotate(-90, 118, 270)" class="lane-sub">Comercial · filtros</text>
+          <line x1="20" y1="350" x2="2180" y2="350" stroke="#0F6F4D" stroke-width="1.5"/>
+
+          <!-- Lane 3: ENTREGA / CLIENTE -->
+          <rect x="20" y="350" width="150" height="170" fill="url(#lnSac)"/>
+          <rect x="170" y="350" width="2010" height="170" fill="#0F6F4D" class="lane-bg"/>
+          <text x="95" y="435" text-anchor="middle" transform="rotate(-90, 95, 435)" class="lane-label">ENTREGA</text>
+          <text x="118" y="435" text-anchor="middle" transform="rotate(-90, 118, 435)" class="lane-sub">SAC + Cliente</text>
+          <line x1="20" y1="520" x2="2180" y2="520" stroke="#0F6F4D" stroke-width="1.5"/>
+
+          <!-- Lane 4: CONTROL / EXCEPCIÓN -->
+          <rect x="20" y="520" width="150" height="130" fill="url(#lnCli)"/>
+          <rect x="170" y="520" width="2010" height="130" fill="#A4CD39" class="lane-bg"/>
+          <text x="95" y="585" text-anchor="middle" transform="rotate(-90, 95, 585)" class="lane-label">CONTROL</text>
+          <text x="118" y="585" text-anchor="middle" transform="rotate(-90, 118, 585)" class="lane-sub">Coordinadora · Notarial</text>
+
+          <!-- ============ CONNECTORS ============ -->
+          <path class="connector flow" d="M 240 130 L 290 130" marker-end="url(#arr)"/>
+          <path class="connector flow" d="M 460 130 L 490 130 L 490 270 L 510 270" marker-end="url(#arr)"/>
+          <path class="connector flow" d="M 690 270 L 708 270" marker-end="url(#arr)"/>
+          <path class="connector flow" d="M 772 270 L 790 270" marker-end="url(#arr)"/>
+          <path class="connector dashed" d="M 740 302 L 740 332 L 460 332 L 460 285 L 510 285" marker-end="url(#arrGold)"/>
+          <path class="connector flow" d="M 970 270 L 988 270" marker-end="url(#arr)"/>
+          <path class="connector flow" d="M 1052 270 L 1075 270 L 1075 437 L 1085 437" marker-end="url(#arr)"/>
+          <path class="connector dashed" d="M 1020 302 L 1020 343 L 380 343 L 380 130 L 460 130" marker-end="url(#arrGold)"/>
+          <path class="connector flow" d="M 1265 437 L 1295 437" marker-end="url(#arr)"/>
+          <path class="connector flow" d="M 1475 437 L 1493 437" marker-end="url(#arr)"/>
+          <path class="connector flow" d="M 1557 437 L 1590 437" marker-end="url(#arr)"/>
+          <path class="connector alert" d="M 1525 469 L 1525 503 L 1475 507" marker-end="url(#arrRed)"/>
+          <path class="connector alert" d="M 1295 507 L 1280 507 L 1280 437 L 1295 437" marker-end="url(#arrRed)"/>
+          <path class="connector flow" d="M 1760 437 L 1780 437" marker-end="url(#arr)"/>
+          <path class="connector flow" d="M 1960 437 L 1992 437" marker-end="url(#arr)"/>
+          <path class="connector dashed" d="M 1385 529 L 1385 583 L 1780 583" marker-end="url(#arrGold)"/>
+          <path class="connector dashed" d="M 1960 583 L 1995 583" marker-end="url(#arrGold)"/>
+          <path class="connector dashed" stroke-dasharray="2 4" d="M 500 560 L 500 215 L 600 215" fill="none" stroke="#5C7A1A"/>
+
+          <!-- Edge labels -->
+          <text class="edge-label" x="745" y="262">SÍ</text>
+          <text class="edge-label" x="610" y="324">NO · corrige</text>
+          <text class="edge-label" x="1025" y="262">SÍ</text>
+          <text class="edge-label" x="700" y="356">NO · corrige obra</text>
+          <text class="edge-label" x="1543" y="430">SÍ</text>
+          <text class="edge-label" x="1565" y="494">NO · retrabajo</text>
+          <text class="edge-label" x="1530" y="575">3+ fallidos · escala notarial</text>
+          <text class="edge-label" x="510" y="208">supervisa SLA 7d</text>
+
+          <!-- ============ NODES ============ -->
+
+          <!-- INICIO PRE -->
+          <g class="node start-evt" data-proc="EVT-INI-PRE">
+            <circle class="node-circ" cx="210" cy="130" r="28" fill="url(#gStart)" stroke="#0A4A33" stroke-width="3.5" filter="url(#lgSh)"/>
+            <path class="node-icon" d="M 200 120 L 222 130 L 200 140 Z" fill="#fff"/>
+            <text x="210" y="180" text-anchor="middle" class="edge-label" font-size="10">INICIO · Casa terminada</text>
+          </g>
+
+          <!-- FIC-001 Solicita Fichaje -->
+          <g class="node" data-proc="FIC-001">
+            <rect class="node-rect" x="290" y="105" width="170" height="54" rx="10" fill="url(#gGer)" stroke="#5E471A" stroke-width="1.3" filter="url(#sSh)"/>
+            <circle cx="290" cy="105" r="13" fill="#C8102E" stroke="#fff" stroke-width="2"/>
+            <text x="290" y="110" text-anchor="middle" fill="#fff" font-size="12" font-weight="900">1</text>
+            <text x="378" y="128" text-anchor="middle" class="node-label" font-size="12">Solicita Fichaje</text>
+            <text x="378" y="144" text-anchor="middle" class="node-label" font-size="10.5" font-weight="500">Operaciones · ~600 obs</text>
+          </g>
+
+          <!-- FIC-002 Fichaje Calidad -->
+          <g class="node" data-proc="FIC-002">
+            <rect class="node-rect" x="510" y="243" width="180" height="54" rx="10" fill="url(#gTec)" stroke="#0A4A33" stroke-width="1.3" filter="url(#sSh)"/>
+            <circle cx="510" cy="243" r="13" fill="#C8102E" stroke="#fff" stroke-width="2"/>
+            <text x="510" y="248" text-anchor="middle" fill="#fff" font-size="12" font-weight="900">2</text>
+            <text x="603" y="266" text-anchor="middle" class="node-label" font-size="12">Fichaje Calidad</text>
+            <text x="603" y="282" text-anchor="middle" class="node-label" font-size="10.5" font-weight="500">~300 obs · técnica</text>
+          </g>
+
+          <!-- GW1 ¿Calidad aprueba? -->
+          <g class="bpmn-gw">
+            <polygon class="node-gw" points="740,238 772,270 740,302 708,270" fill="url(#gGw)" stroke="#5C7A1A" stroke-width="1.8" filter="url(#sSh)"/>
+            <text x="740" y="276" text-anchor="middle" class="node-label dark" font-size="17" font-weight="900">?</text>
+            <text x="740" y="225" text-anchor="middle" class="edge-label" font-size="10">¿Aprueba Calidad?</text>
+          </g>
+
+          <!-- FIC-003 Fichaje Comercial -->
+          <g class="node" data-proc="FIC-003">
+            <rect class="node-rect" x="790" y="243" width="180" height="54" rx="10" fill="url(#gTec)" stroke="#0A4A33" stroke-width="1.3" filter="url(#sSh)"/>
+            <circle cx="790" cy="243" r="13" fill="#C8102E" stroke="#fff" stroke-width="2"/>
+            <text x="790" y="248" text-anchor="middle" fill="#fff" font-size="12" font-weight="900">3</text>
+            <text x="883" y="266" text-anchor="middle" class="node-label" font-size="12">Fichaje Comercial</text>
+            <text x="883" y="282" text-anchor="middle" class="node-label" font-size="10.5" font-weight="500">~300 obs · estética</text>
+          </g>
+
+          <!-- GW2 ¿Comercial aprueba? -->
+          <g class="bpmn-gw">
+            <polygon class="node-gw" points="1020,238 1052,270 1020,302 988,270" fill="url(#gGw)" stroke="#5C7A1A" stroke-width="1.8" filter="url(#sSh)"/>
+            <text x="1020" y="276" text-anchor="middle" class="node-label dark" font-size="17" font-weight="900">?</text>
+            <text x="1020" y="225" text-anchor="middle" class="edge-label" font-size="10">¿Aprueba Comercial?</text>
+          </g>
+
+          <!-- ENT-001 Convoca y agenda -->
+          <g class="node" data-proc="ENT-001">
+            <rect class="node-rect" x="1085" y="410" width="180" height="54" rx="10" fill="url(#gSac)" stroke="#0A4A33" stroke-width="1.3" filter="url(#sSh)"/>
+            <circle cx="1085" cy="410" r="13" fill="#C8102E" stroke="#fff" stroke-width="2"/>
+            <text x="1085" y="415" text-anchor="middle" fill="#fff" font-size="12" font-weight="900">4</text>
+            <text x="1178" y="433" text-anchor="middle" class="node-label" font-size="12">Agenda Entrega</text>
+            <text x="1178" y="449" text-anchor="middle" class="node-label" font-size="10.5" font-weight="500">3 intentos máx.</text>
+          </g>
+
+          <!-- EJE-005 Inspección conjunta -->
+          <g class="node" data-proc="EJE-005">
+            <rect class="node-rect" x="1295" y="410" width="180" height="54" rx="10" fill="url(#gSac)" stroke="#0A4A33" stroke-width="1.3" filter="url(#sSh)"/>
+            <circle cx="1295" cy="410" r="13" fill="#C8102E" stroke="#fff" stroke-width="2"/>
+            <text x="1295" y="415" text-anchor="middle" fill="#fff" font-size="12" font-weight="900">5</text>
+            <text x="1388" y="433" text-anchor="middle" class="node-label" font-size="12">Inspección Conjunta</text>
+            <text x="1388" y="449" text-anchor="middle" class="node-label" font-size="10.5" font-weight="500">Cliente recorre · observa</text>
+          </g>
+
+          <!-- GW3 ¿Cliente acepta? -->
+          <g class="bpmn-gw">
+            <polygon class="node-gw" points="1525,405 1557,437 1525,469 1493,437" fill="url(#gGw)" stroke="#5C7A1A" stroke-width="1.8" filter="url(#sSh)"/>
+            <text x="1525" y="443" text-anchor="middle" class="node-label dark" font-size="17" font-weight="900">?</text>
+            <text x="1525" y="392" text-anchor="middle" class="edge-label" font-size="10">¿Cliente acepta?</text>
+          </g>
+
+          <!-- ENT-002 Retrabajo -->
+          <g class="node" data-proc="ENT-002">
+            <rect class="node-rect" x="1295" y="485" width="180" height="44" rx="10" fill="url(#gSac)" stroke="#0A4A33" stroke-width="1.3" filter="url(#sSh)"/>
+            <text x="1385" y="503" text-anchor="middle" class="node-label" font-size="12">Retrabajo</text>
+            <text x="1385" y="519" text-anchor="middle" class="node-label" font-size="10.5" font-weight="500">Operaciones corrige</text>
+          </g>
+
+          <!-- ENT-003 Lectura Medidores -->
+          <g class="node" data-proc="ENT-003">
+            <rect class="node-rect" x="1590" y="410" width="170" height="54" rx="10" fill="url(#gSac)" stroke="#0A4A33" stroke-width="1.3" filter="url(#sSh)"/>
+            <circle cx="1590" cy="410" r="13" fill="#C8102E" stroke="#fff" stroke-width="2"/>
+            <text x="1590" y="415" text-anchor="middle" fill="#fff" font-size="12" font-weight="900">6</text>
+            <text x="1678" y="433" text-anchor="middle" class="node-label" font-size="12">Lectura Medidores</text>
+            <text x="1678" y="449" text-anchor="middle" class="node-label" font-size="10.5" font-weight="500">Agua · Luz · Gas</text>
+          </g>
+
+          <!-- ENT-004 Firma + Manual -->
+          <g class="node" data-proc="ENT-004">
+            <rect class="node-rect" x="1780" y="410" width="180" height="54" rx="10" fill="url(#gSac)" stroke="#0A4A33" stroke-width="1.3" filter="url(#sSh)"/>
+            <circle cx="1780" cy="410" r="13" fill="#C8102E" stroke="#fff" stroke-width="2"/>
+            <text x="1780" y="415" text-anchor="middle" fill="#fff" font-size="12" font-weight="900">7</text>
+            <text x="1873" y="433" text-anchor="middle" class="node-label" font-size="12">Firma + Manual</text>
+            <text x="1873" y="449" text-anchor="middle" class="node-label" font-size="10.5" font-weight="500">Recibe llaves</text>
+          </g>
+
+          <!-- FIN-PRE -->
+          <g class="node end-evt" data-proc="EVT-FIN-PRE">
+            <circle class="node-circ" cx="2020" cy="437" r="28" fill="url(#gEnd)" stroke="#5C060F" stroke-width="4" filter="url(#lgSh)"/>
+            <rect x="2010" y="427" width="20" height="20" rx="2" fill="#fff"/>
+            <text x="2020" y="488" text-anchor="middle" class="edge-label" font-size="10">FIN · Casa entregada</text>
+          </g>
+
+          <!-- FIC-004 Coordinadora torre control -->
+          <g class="node" data-proc="FIC-004">
+            <rect class="node-rect" x="400" y="558" width="200" height="46" rx="10" fill="url(#gCli)" stroke="#5C7A1A" stroke-width="1.3" filter="url(#sSh)"/>
+            <circle cx="400" cy="558" r="12" fill="#C8102E" stroke="#fff" stroke-width="2"/>
+            <text x="400" y="562" text-anchor="middle" fill="#fff" font-size="11" font-weight="900">★</text>
+            <text x="500" y="578" text-anchor="middle" class="node-label" font-size="12">Torre de Control</text>
+            <text x="500" y="594" text-anchor="middle" class="node-label" font-size="10.5" font-weight="500">Coordinadora · semáforo</text>
+          </g>
+
+          <!-- ENT-005 Entrega Notarial -->
+          <g class="node" data-proc="ENT-005">
+            <rect class="node-rect" x="1780" y="558" width="180" height="46" rx="10" fill="url(#gCli)" stroke="#5C7A1A" stroke-width="1.3" filter="url(#sSh)"/>
+            <circle cx="1780" cy="558" r="12" fill="#C8102E" stroke="#fff" stroke-width="2"/>
+            <text x="1780" y="562" text-anchor="middle" fill="#fff" font-size="11" font-weight="900">!</text>
+            <text x="1873" y="578" text-anchor="middle" class="node-label" font-size="12">Entrega Notarial</text>
+            <text x="1873" y="594" text-anchor="middle" class="node-label" font-size="10.5" font-weight="500">Excepción · 4° intento</text>
+          </g>
+
+          <!-- FIN-NOT -->
+          <g class="node end-evt" data-proc="EVT-FIN-NOT">
+            <circle class="node-circ" cx="2020" cy="581" r="22" fill="url(#gEnd)" stroke="#5C060F" stroke-width="3.5" filter="url(#sSh)"/>
+            <rect x="2012" y="573" width="16" height="16" rx="2" fill="#fff"/>
+            <text x="2020" y="624" text-anchor="middle" class="edge-label" font-size="10">FIN · Notarial</text>
+          </g>
+
+        </svg>
+      </div>
+
+      <!-- ============ CYCLE B · POSTVENTA ============ -->
+      <div class="cycle-divider">
+        <div class="cycle-num red">B</div>
+        <div class="cycle-info">
+          <h3>Ciclo B · Postventa (Cliente con la Casa)</h3>
+          <p>El propietario ya recibió la casa y, en el uso diario, detecta una falla. Levanta un reclamo por uno de los <b>tres canales</b> (Presencial, Telefónico o Portal Web). SAC valida la garantía, clasifica la urgencia y dispara la ejecución técnica con un contratista. El ciclo termina con acta firmada y encuesta NPS — o, en casos extremos, con derivación legal por falta de cobertura.</p>
+        </div>
+      </div>
+
+      <div class="bpmn-canvas" id="bpmnCanvasB">
+        <svg id="bpmnSvgB" viewBox="0 0 2620 740" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Flujograma BPMN del Ciclo Postventa">
+
+          <!-- ============ POSTVENTA · PHASE RIBBONS ============ -->
+          <g id="phasesB">
+            <rect x="200" y="14" width="380" height="42" rx="10" fill="url(#phOne)" filter="url(#sSh)"/>
+            <text x="390" y="42" text-anchor="middle" class="phase-label">◆ 1 · INGRESO</text>
+
+            <rect x="590" y="14" width="240" height="42" rx="10" fill="url(#phTwo)" filter="url(#sSh)"/>
+            <text x="710" y="42" text-anchor="middle" class="phase-label">◆ 2 · VALIDACIÓN</text>
+
+            <rect x="840" y="14" width="440" height="42" rx="10" fill="url(#phThr)" filter="url(#sSh)"/>
+            <text x="1060" y="42" text-anchor="middle" class="phase-label">◆ 3 · CLASIFICACIÓN</text>
+
+            <rect x="1290" y="14" width="620" height="42" rx="10" fill="url(#phFou)" filter="url(#sSh)"/>
+            <text x="1600" y="42" text-anchor="middle" class="phase-label">◆ 4 · EJECUCIÓN TÉCNICA</text>
+
+            <rect x="1920" y="14" width="680" height="42" rx="10" fill="url(#phFiv)" filter="url(#sSh)"/>
+            <text x="2260" y="42" text-anchor="middle" class="phase-label">◆ 5 · CIERRE &amp; REPORTE</text>
+          </g>
+
+          <!-- ============ SWIMLANES ============ -->
+          <rect x="20" y="70" width="2580" height="660" fill="none" stroke="#0F6F4D" stroke-width="1.8" rx="12"/>
+
+          <!-- Lane CLIENTE -->
+          <rect x="20" y="70" width="150" height="200" fill="url(#lnCli)"/>
+          <rect x="170" y="70" width="2430" height="200" fill="#A4CD39" class="lane-bg"/>
+          <text x="95" y="170" text-anchor="middle" transform="rotate(-90, 95, 170)" class="lane-label">CLIENTE</text>
+          <text x="118" y="170" text-anchor="middle" transform="rotate(-90, 118, 170)" class="lane-sub">Propietario</text>
+          <line x1="20" y1="270" x2="2600" y2="270" stroke="#0F6F4D" stroke-width="1.5"/>
+
+          <!-- Lane SAC -->
+          <rect x="20" y="270" width="150" height="190" fill="url(#lnSac)"/>
+          <rect x="170" y="270" width="2430" height="190" fill="#0F6F4D" class="lane-bg"/>
+          <text x="95" y="365" text-anchor="middle" transform="rotate(-90, 95, 365)" class="lane-label">SAC</text>
+          <text x="118" y="365" text-anchor="middle" transform="rotate(-90, 118, 365)" class="lane-sub">Servicio al Cliente</text>
+          <line x1="20" y1="460" x2="2600" y2="460" stroke="#0F6F4D" stroke-width="1.5"/>
+
+          <!-- Lane TÉCNICO / CALIDAD -->
+          <rect x="20" y="460" width="150" height="160" fill="url(#lnTec)"/>
+          <rect x="170" y="460" width="2430" height="160" fill="#0A4A33" class="lane-bg-alt"/>
+          <text x="95" y="540" text-anchor="middle" transform="rotate(-90, 95, 540)" class="lane-label">TÉCNICO</text>
+          <text x="118" y="540" text-anchor="middle" transform="rotate(-90, 118, 540)" class="lane-sub">Calidad · Contratista</text>
+          <line x1="20" y1="620" x2="2600" y2="620" stroke="#0F6F4D" stroke-width="1.5"/>
+
+          <!-- Lane GERENCIA -->
+          <rect x="20" y="620" width="150" height="110" fill="url(#lnGer)"/>
+          <rect x="170" y="620" width="2430" height="110" fill="#C9A04E" class="lane-bg-alt"/>
+          <text x="95" y="675" text-anchor="middle" transform="rotate(-90, 95, 675)" class="lane-label">GERENCIA</text>
+
+          <!-- ============ CONNECTORS ============ -->
+          <!-- 3 Canales → GW-X (Presencial / Telefónico / Portal Web) -->
+          <path class="connector flow" d="M 450 119 L 482 165" marker-end="url(#arr)"/>
+          <path class="connector flow" d="M 450 170 L 482 170" marker-end="url(#arr)"/>
+          <path class="connector flow" d="M 450 221 L 482 175" marker-end="url(#arr)"/>
+
+          <!-- INI → primer canal (decorativo) -->
+          <path class="connector flow" d="M 240 170 L 290 170" marker-end="url(#arr)"/>
+
+          <!-- GW-X → ING-004 (down to SAC) -->
+          <path class="connector flow" d="M 538 170 L 580 170 L 580 370 L 600 370" marker-end="url(#arr)"/>
+
+          <!-- ING-004 → GW-Garantía -->
+          <path class="connector flow" d="M 770 370 L 798 370" marker-end="url(#arr)"/>
+
+          <!-- GW-G SÍ → TKT-001 -->
+          <path class="connector flow" d="M 862 370 L 875 370" marker-end="url(#arr)"/>
+
+          <!-- GW-G NO → EJE-004 (Excepción Gerencia) -->
+          <path class="connector dashed" d="M 830 402 L 830 652" marker-end="url(#arrGold)"/>
+
+          <!-- EJE-004 Aprueba → re-entra al flujo (TKT-001) -->
+          <path class="connector dashed" d="M 860 675 L 880 675 L 880 397" marker-end="url(#arrGold)"/>
+
+          <!-- EJE-004 Rechaza → FIN-LEG -->
+          <path class="connector alert" d="M 660 675 L 506 675" marker-end="url(#arrRed)"/>
+
+          <!-- TKT chain -->
+          <path class="connector flow" d="M 1035 370 L 1055 370" marker-end="url(#arr)"/>
+          <path class="connector flow" d="M 1215 370 L 1235 370" marker-end="url(#arr)"/>
+
+          <!-- TKT-003 → TKT-005 (Notifica cliente) -->
+          <path class="connector flow" d="M 1340 343 L 1340 240 L 1500 170" marker-end="url(#arr)"/>
+
+          <!-- TKT-003 → GW-Riesgo -->
+          <path class="connector flow" d="M 1395 370 L 1428 370" marker-end="url(#arr)"/>
+
+          <!-- GW-R NO → EJE-001 (down) -->
+          <path class="connector flow" d="M 1460 402 L 1460 488 L 1395 488 L 1395 513" marker-end="url(#arr)"/>
+
+          <!-- GW-R SÍ → TKT-004 (down to GERENCIA) -->
+          <path class="connector alert" d="M 1492 370 L 1620 370 L 1620 652" marker-end="url(#arrRed)"/>
+
+          <!-- TKT-004 → EJE-001 (priority) -->
+          <path class="connector dashed" d="M 1380 675 L 1330 675 L 1330 567" marker-end="url(#arrGold)"/>
+
+          <!-- EJE-001 → EJE-002 (back up to SAC) -->
+          <path class="connector flow" d="M 1555 540 L 1605 540 L 1605 397" marker-end="url(#arr)"/>
+
+          <!-- EJE-002 → EJE-003 (down to TÉCNICO) -->
+          <path class="connector flow" d="M 1685 397 L 1685 540 L 1730 540" marker-end="url(#arr)"/>
+
+          <!-- EJE-003 → GW-Conf -->
+          <path class="connector flow" d="M 1900 540 L 1908 540" marker-end="url(#arr)"/>
+
+          <!-- GW-Conf NO → loop EJE-003 -->
+          <path class="connector alert" d="M 1940 572 L 1940 605 L 1815 605 L 1815 567" marker-end="url(#arrRed)"/>
+
+          <!-- GW-Conf SÍ → CIE-001 (up to CLIENTE) -->
+          <path class="connector flow" d="M 1972 540 L 2030 540 L 2030 170 L 2080 170" marker-end="url(#arr)"/>
+
+          <!-- CIE chain -->
+          <path class="connector flow" d="M 2250 170 L 2330 170" marker-end="url(#arr)"/>
+          <path class="connector flow" d="M 2490 170 L 2510 170" marker-end="url(#arr)"/>
+
+          <!-- CIE-001 → CIE-003 (asíncrono) -->
+          <path class="connector dashed" d="M 2165 194 L 2165 652" marker-end="url(#arrGold)"/>
+
+          <!-- CIE-003 → CIE-004 -->
+          <path class="connector flow" d="M 2150 675 L 2170 675" marker-end="url(#arr)"/>
+
+
+          <!-- Edge labels -->
+          <text class="edge-label" x="855" y="362">SÍ</text>
+          <text class="edge-label" x="780" y="500">NO · sin garantía</text>
+          <text class="edge-label" x="900" y="555">Aprueba 3 firmas</text>
+          <text class="edge-label" x="585" y="668">Rechaza</text>
+          <text class="edge-label" x="1410" y="265">Notifica</text>
+          <text class="edge-label" x="1448" y="362">NO</text>
+          <text class="edge-label" x="1620" y="362">SÍ · prioriza</text>
+          <text class="edge-label" x="1955" y="528">SÍ</text>
+          <text class="edge-label" x="1880" y="625">NO · reagendar</text>
+          <text class="edge-label" x="2200" y="450">async · informe</text>
+
+          <!-- ============ NODES ============ -->
+
+          <!-- INI POST -->
+          <g class="node start-evt" data-proc="EVT-INI-POST">
+            <circle class="node-circ" cx="210" cy="170" r="28" fill="url(#gStart)" stroke="#0A4A33" stroke-width="3.5" filter="url(#lgSh)"/>
+            <path class="node-icon" d="M 200 160 L 222 170 L 200 180 Z" fill="#fff"/>
+            <text x="210" y="222" text-anchor="middle" class="edge-label" font-size="10">INICIO · Falla detectada</text>
+          </g>
+
+          <!-- ING-001A Presencial -->
+          <g class="node" data-proc="ING-001A">
+            <rect class="node-rect" x="290" y="98" width="160" height="42" rx="8" fill="url(#gCli)" stroke="#5C7A1A" stroke-width="1.2" filter="url(#sSh)"/>
+            <circle cx="307" cy="119" r="11" fill="#fff" opacity=".95"/>
+            <text x="307" y="124" text-anchor="middle" fill="#5C7A1A" font-size="12" font-weight="900">⌂</text>
+            <text x="383" y="124" text-anchor="middle" class="node-label" font-size="11.5" fill="#1A3506">Presencial · oficina</text>
+          </g>
+
+          <!-- ING-001B Telefónico -->
+          <g class="node" data-proc="ING-001B">
+            <rect class="node-rect" x="290" y="149" width="160" height="42" rx="8" fill="url(#gCli)" stroke="#5C7A1A" stroke-width="1.2" filter="url(#sSh)"/>
+            <circle cx="307" cy="170" r="11" fill="#fff" opacity=".95"/>
+            <text x="307" y="175" text-anchor="middle" fill="#5C7A1A" font-size="13" font-weight="900">☏</text>
+            <text x="383" y="175" text-anchor="middle" class="node-label" font-size="11.5" fill="#1A3506">Telefónico · Call</text>
+          </g>
+
+          <!-- ING-002 Portal Web -->
+          <g class="node" data-proc="ING-002">
+            <rect class="node-rect" x="290" y="200" width="160" height="42" rx="8" fill="url(#gCli)" stroke="#5C7A1A" stroke-width="1.2" filter="url(#sSh)"/>
+            <circle cx="307" cy="221" r="11" fill="#fff" opacity=".95"/>
+            <text x="307" y="226" text-anchor="middle" fill="#5C7A1A" font-size="12" font-weight="900">W</text>
+            <text x="383" y="226" text-anchor="middle" class="node-label" font-size="11.5" fill="#1A3506">Portal Web · self</text>
+          </g>
+
+          <!-- GW-X convergencia (ING-001 overview) -->
+          <g class="node" data-proc="ING-001">
+            <polygon class="node-gw" points="510,142 538,170 510,198 482,170" fill="url(#gGw)" stroke="#5C7A1A" stroke-width="1.8" filter="url(#sSh)"/>
+            <text x="510" y="177" text-anchor="middle" class="node-label dark" font-size="18" font-weight="900">✕</text>
+          </g>
+
+          <!-- ING-004 Validación -->
+          <g class="node" data-proc="ING-004">
+            <rect class="node-rect" x="600" y="343" width="170" height="54" rx="10" fill="url(#gSac)" stroke="#0A4A33" stroke-width="1.3" filter="url(#sSh)"/>
+            <circle cx="600" cy="343" r="13" fill="#C8102E" stroke="#fff" stroke-width="2"/>
+            <text x="600" y="348" text-anchor="middle" fill="#fff" font-size="12" font-weight="900">1</text>
+            <text x="688" y="366" text-anchor="middle" class="node-label" font-size="12">Valida RUT/Casa</text>
+            <text x="688" y="382" text-anchor="middle" class="node-label" font-size="10.5" font-weight="500">+ ¿garantía?</text>
+          </g>
+
+          <!-- GW-Garantía -->
+          <g class="bpmn-gw">
+            <polygon class="node-gw" points="830,338 862,370 830,402 798,370" fill="url(#gGw)" stroke="#5C7A1A" stroke-width="1.8" filter="url(#sSh)"/>
+            <text x="830" y="376" text-anchor="middle" class="node-label dark" font-size="17" font-weight="900">?</text>
+            <text x="830" y="325" text-anchor="middle" class="edge-label" font-size="10">¿Garantía?</text>
+          </g>
+
+          <!-- TKT-001 Pre-Ticket -->
+          <g class="node" data-proc="TKT-001">
+            <rect class="node-rect" x="875" y="343" width="160" height="54" rx="10" fill="url(#gSac)" stroke="#0A4A33" stroke-width="1.3" filter="url(#sSh)"/>
+            <circle cx="875" cy="343" r="13" fill="#C8102E" stroke="#fff" stroke-width="2"/>
+            <text x="875" y="348" text-anchor="middle" fill="#fff" font-size="12" font-weight="900">2</text>
+            <text x="958" y="366" text-anchor="middle" class="node-label" font-size="12">Pre-Ticket</text>
+            <text x="958" y="382" text-anchor="middle" class="node-label" font-size="10.5" font-weight="500">Árbol de falla</text>
+          </g>
+
+          <!-- TKT-002 Round-Robin -->
+          <g class="node" data-proc="TKT-002">
+            <rect class="node-rect" x="1055" y="343" width="160" height="54" rx="10" fill="url(#gSac)" stroke="#0A4A33" stroke-width="1.3" filter="url(#sSh)"/>
+            <circle cx="1055" cy="343" r="13" fill="#C8102E" stroke="#fff" stroke-width="2"/>
+            <text x="1055" y="348" text-anchor="middle" fill="#fff" font-size="12" font-weight="900">3</text>
+            <text x="1138" y="366" text-anchor="middle" class="node-label" font-size="12">Round-Robin</text>
+            <text x="1138" y="382" text-anchor="middle" class="node-label" font-size="10.5" font-weight="500">asigna ejecutivo</text>
+          </g>
+
+          <!-- TKT-003 Ticket oficial -->
+          <g class="node" data-proc="TKT-003">
+            <rect class="node-rect" x="1235" y="343" width="160" height="54" rx="10" fill="url(#gSac)" stroke="#0A4A33" stroke-width="1.3" filter="url(#sSh)"/>
+            <circle cx="1235" cy="343" r="13" fill="#C8102E" stroke="#fff" stroke-width="2"/>
+            <text x="1235" y="348" text-anchor="middle" fill="#fff" font-size="12" font-weight="900">4</text>
+            <text x="1318" y="366" text-anchor="middle" class="node-label" font-size="12">Ticket Oficial</text>
+            <text x="1318" y="382" text-anchor="middle" class="node-label" font-size="10.5" font-weight="500">clasifica urgencia</text>
+          </g>
+
+          <!-- TKT-005 Notifica cliente -->
+          <g class="node" data-proc="TKT-005">
+            <rect class="node-rect" x="1500" y="146" width="170" height="48" rx="10" fill="url(#gCli)" stroke="#5C7A1A" stroke-width="1.2" filter="url(#sSh)"/>
+            <circle cx="1518" cy="170" r="12" fill="#fff" opacity=".95"/>
+            <text x="1518" y="174" text-anchor="middle" fill="#1A3506" font-size="12" font-weight="900">✉</text>
+            <text x="1593" y="166" text-anchor="middle" class="node-label" font-size="11.5">Recibe correo</text>
+            <text x="1593" y="182" text-anchor="middle" class="node-label" font-size="10.5" font-weight="500">Ticket oficial · folio</text>
+          </g>
+
+          <!-- GW-Riesgo -->
+          <g class="bpmn-gw">
+            <polygon class="node-gw" points="1460,338 1492,370 1460,402 1428,370" fill="url(#gGw)" stroke="#5C7A1A" stroke-width="1.8" filter="url(#sSh)"/>
+            <text x="1460" y="376" text-anchor="middle" class="node-label dark" font-size="18" font-weight="900">!</text>
+            <text x="1460" y="325" text-anchor="middle" class="edge-label" font-size="10">¿Riesgo vital?</text>
+          </g>
+
+          <!-- EJE-002 Emite OT -->
+          <g class="node" data-proc="EJE-002">
+            <rect class="node-rect" x="1605" y="343" width="160" height="54" rx="10" fill="url(#gSac)" stroke="#0A4A33" stroke-width="1.3" filter="url(#sSh)"/>
+            <circle cx="1605" cy="343" r="13" fill="#C8102E" stroke="#fff" stroke-width="2"/>
+            <text x="1605" y="348" text-anchor="middle" fill="#fff" font-size="12" font-weight="900">6</text>
+            <text x="1685" y="366" text-anchor="middle" class="node-label" font-size="12">Emite OT(s)</text>
+            <text x="1685" y="382" text-anchor="middle" class="node-label" font-size="10.5" font-weight="500">1 → N especialidades</text>
+          </g>
+
+          <!-- EJE-001 Visita Técnica · Diagnóstico -->
+          <g class="node" data-proc="EJE-001">
+            <rect class="node-rect" x="1315" y="513" width="160" height="54" rx="10" fill="url(#gTec)" stroke="#0A4A33" stroke-width="1.3" filter="url(#sSh)"/>
+            <circle cx="1315" cy="513" r="13" fill="#C8102E" stroke="#fff" stroke-width="2"/>
+            <text x="1315" y="518" text-anchor="middle" fill="#fff" font-size="12" font-weight="900">5</text>
+            <text x="1395" y="536" text-anchor="middle" class="node-label" font-size="12">Visita Técnica</text>
+            <text x="1395" y="552" text-anchor="middle" class="node-label" font-size="10.5" font-weight="500">Diagnóstico · app móvil</text>
+          </g>
+
+          <!-- EJE-003 Ejecuta -->
+          <g class="node" data-proc="EJE-003">
+            <rect class="node-rect" x="1730" y="513" width="170" height="54" rx="10" fill="url(#gTec)" stroke="#0A4A33" stroke-width="1.3" filter="url(#sSh)"/>
+            <circle cx="1730" cy="513" r="13" fill="#C8102E" stroke="#fff" stroke-width="2"/>
+            <text x="1730" y="518" text-anchor="middle" fill="#fff" font-size="12" font-weight="900">7</text>
+            <text x="1815" y="536" text-anchor="middle" class="node-label" font-size="12">Contratista ejecuta</text>
+            <text x="1815" y="552" text-anchor="middle" class="node-label" font-size="10.5" font-weight="500">+ documenta evidencia</text>
+          </g>
+
+          <!-- GW-Conf -->
+          <g class="bpmn-gw">
+            <polygon class="node-gw" points="1940,508 1972,540 1940,572 1908,540" fill="url(#gGw)" stroke="#5C7A1A" stroke-width="1.8" filter="url(#sSh)"/>
+            <text x="1940" y="546" text-anchor="middle" class="node-label dark" font-size="17" font-weight="900">✓</text>
+            <text x="1940" y="495" text-anchor="middle" class="edge-label" font-size="10">¿Conforme?</text>
+          </g>
+
+          <!-- CIE-001 Firma acta -->
+          <g class="node" data-proc="CIE-001">
+            <rect class="node-rect" x="2080" y="146" width="170" height="48" rx="10" fill="url(#gCli)" stroke="#5C7A1A" stroke-width="1.2" filter="url(#sSh)"/>
+            <circle cx="2098" cy="170" r="12" fill="#fff" opacity=".95"/>
+            <path d="M 2093 170 l 3 3 l 6 -6" stroke="#1A3506" stroke-width="2" fill="none"/>
+            <text x="2173" y="166" text-anchor="middle" class="node-label" font-size="11.5">Firma Acta</text>
+            <text x="2173" y="182" text-anchor="middle" class="node-label" font-size="10.5" font-weight="500">~72% conforme</text>
+          </g>
+
+          <!-- CIE-002 Encuesta NPS -->
+          <g class="node" data-proc="CIE-002">
+            <rect class="node-rect" x="2330" y="146" width="160" height="48" rx="10" fill="url(#gCli)" stroke="#5C7A1A" stroke-width="1.2" filter="url(#sSh)"/>
+            <circle cx="2348" cy="170" r="12" fill="#fff" opacity=".95"/>
+            <text x="2348" y="174" text-anchor="middle" fill="#1A3506" font-size="12" font-weight="900">★</text>
+            <text x="2418" y="166" text-anchor="middle" class="node-label" font-size="11.5">Encuesta NPS</text>
+            <text x="2418" y="182" text-anchor="middle" class="node-label" font-size="10.5" font-weight="500">Satisfacción</text>
+          </g>
+
+          <!-- FIN POST -->
+          <g class="node end-evt" data-proc="EVT-FIN-POST">
+            <circle class="node-circ" cx="2540" cy="170" r="28" fill="url(#gEnd)" stroke="#5C060F" stroke-width="4" filter="url(#lgSh)"/>
+            <rect x="2530" y="160" width="20" height="20" rx="2" fill="#fff"/>
+            <text x="2540" y="222" text-anchor="middle" class="edge-label" font-size="10">FIN · Caso conforme</text>
+          </g>
+
+          <!-- EJE-004 Excepción 3 firmas -->
+          <g class="node" data-proc="EJE-004">
+            <rect class="node-rect" x="660" y="652" width="200" height="46" rx="10" fill="url(#gGer)" stroke="#5E471A" stroke-width="1.3" filter="url(#sSh)"/>
+            <circle cx="660" cy="652" r="12" fill="#C8102E" stroke="#fff" stroke-width="2"/>
+            <text x="660" y="656" text-anchor="middle" fill="#fff" font-size="11" font-weight="900">!</text>
+            <text x="760" y="672" text-anchor="middle" class="node-label" font-size="12">Excepción · 3 firmas</text>
+            <text x="760" y="688" text-anchor="middle" class="node-label" font-size="10.5" font-weight="500">SAC + Calidad + GG</text>
+          </g>
+
+          <!-- FIN-LEG -->
+          <g class="node end-evt" data-proc="EVT-FIN-LEG">
+            <circle class="node-circ" cx="480" cy="675" r="22" fill="url(#gEnd)" stroke="#5C060F" stroke-width="3.5" filter="url(#sSh)"/>
+            <rect x="472" y="667" width="16" height="16" rx="2" fill="#fff"/>
+            <text x="480" y="712" text-anchor="middle" class="edge-label" font-size="10">FIN · Sin cobertura</text>
+          </g>
+
+          <!-- TKT-004 Postventa crítica -->
+          <g class="node" data-proc="TKT-004">
+            <rect class="node-rect" x="1380" y="652" width="170" height="46" rx="10" fill="url(#gGer)" stroke="#5E471A" stroke-width="1.3" filter="url(#sSh)"/>
+            <circle cx="1380" cy="652" r="12" fill="#C8102E" stroke="#fff" stroke-width="2"/>
+            <text x="1380" y="656" text-anchor="middle" fill="#fff" font-size="11" font-weight="900">!</text>
+            <text x="1470" y="672" text-anchor="middle" class="node-label" font-size="12">Postventa crítica</text>
+            <text x="1470" y="688" text-anchor="middle" class="node-label" font-size="10.5" font-weight="500">Riesgo vital · prioriza</text>
+          </g>
+
+          <!-- CIE-003 Informe Ejecutivo -->
+          <g class="node" data-proc="CIE-003">
+            <rect class="node-rect" x="1980" y="652" width="170" height="46" rx="10" fill="url(#gGer)" stroke="#5E471A" stroke-width="1.3" filter="url(#sSh)"/>
+            <circle cx="1980" cy="652" r="12" fill="#C8102E" stroke="#fff" stroke-width="2"/>
+            <text x="1980" y="656" text-anchor="middle" fill="#fff" font-size="11" font-weight="900">8</text>
+            <text x="2065" y="672" text-anchor="middle" class="node-label" font-size="12">Informe Ejecutivo</text>
+            <text x="2065" y="688" text-anchor="middle" class="node-label" font-size="10.5" font-weight="500">23 pág · semanal</text>
+          </g>
+
+          <!-- CIE-004 Tablero Directorio -->
+          <g class="node" data-proc="CIE-004">
+            <rect class="node-rect" x="2170" y="652" width="160" height="46" rx="10" fill="url(#gGer)" stroke="#5E471A" stroke-width="1.3" filter="url(#sSh)"/>
+            <circle cx="2170" cy="652" r="12" fill="#C8102E" stroke="#fff" stroke-width="2"/>
+            <text x="2170" y="656" text-anchor="middle" fill="#fff" font-size="11" font-weight="900">9</text>
+            <text x="2250" y="672" text-anchor="middle" class="node-label" font-size="12">Tablero Directorio</text>
+            <text x="2250" y="688" text-anchor="middle" class="node-label" font-size="10.5" font-weight="500">Trimestral</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="bpmn-tip">
+        💡 <b>Haz clic en cualquier nodo</b> para abrir el detalle del proceso — las etapas numeradas muestran el orden de ejecución · badges rojos indican SLA crítico · las líneas punteadas representan excepciones y loops de reagendamiento.
+      </div>
+    </section>
+
+    <!-- LEGEND -->
+    <div class="legend-card">
+      <h3>Áreas y responsabilidades</h3>
+      <div class="legend-grid">
+        <span class="card-tag" style="--tag-color:var(--tag-postventa); --tag-bg:var(--tag-postventa-bg)">Postventa (SAC)</span>
+        <span class="card-tag" style="--tag-color:var(--tag-operaciones); --tag-bg:var(--tag-operaciones-bg)">Operaciones</span>
+        <span class="card-tag" style="--tag-color:var(--tag-calidad); --tag-bg:var(--tag-calidad-bg)">Control Calidad</span>
+        <span class="card-tag" style="--tag-color:var(--tag-comercial); --tag-bg:var(--tag-comercial-bg)">Comercial</span>
+        <span class="card-tag" style="--tag-color:var(--tag-sistema); --tag-bg:var(--tag-sistema-bg)">Sistema Integrado</span>
+        <span class="card-tag" style="--tag-color:var(--tag-cliente); --tag-bg:var(--tag-cliente-bg)">Cliente / Portal</span>
+        <span class="card-tag" style="--tag-color:var(--tag-legal); --tag-bg:var(--tag-legal-bg)">Legal</span>
+        <span class="card-tag" style="--tag-color:var(--tag-gerencia); --tag-bg:var(--tag-gerencia-bg)">Gerencia</span>
+        <span class="card-tag" style="--tag-color:var(--ci-coral); --tag-bg:var(--ci-coral-soft)">Urgente / Crítico</span>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- ============ MODAL ============ -->
+<div class="modal-backdrop" id="modal">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-head">
+      <div>
+        <div class="code" id="mCode">PRO-XXX-000</div>
+        <h3 id="mTitle">Título del proceso</h3>
+      </div>
+      <button class="modal-close" onclick="closeModal()" aria-label="Cerrar">✕</button>
+    </div>
+    <div class="modal-body" id="mBody"></div>
+  </div>
+</div>
+
+<footer>
+  <div class="brand-name">CONSTRUCTORA INDEPENDENCIA</div>
+  <div class="brand-line"></div>
+  <p>Mapa de procesos · Subgerencia de Servicio al Cliente · Levantamiento 2026</p>
+  <p style="margin-top:4px; opacity:.6; font-size:11px;">Documento elaborado a partir de entrevista con la Subgerencia SAC · Uso interno</p>
+</footer>
+
+<script>
+/* ========== DATA: detalle de cada proceso ========== */
+const PROC = {
+  'FIC-001': {
+    code: 'PRO-FIC-001',
+    title: 'Fichaje de Operaciones',
+    description: 'Primera revisión técnica antes de la entrega. La realiza el mismo equipo de Operaciones que construyó la vivienda y es el primer filtro de calidad. Cada observación se registra directamente en el módulo de Fichaje del Sistema Integrado, asociando la falla a una unidad específica (no es papel ni planilla). Como referencia interna, una casa típica genera del orden de 40 observaciones en este filtro — un volumen bajo que se contrasta con el siguiente fichaje para validar profundidad.',
+    actors: ['Operaciones (Director de obra · Jefe de zona)', 'Sistema Integrado · Módulo de Fichaje'],
+    inputs: 'Vivienda físicamente terminada por la obra y lista para revisión interna.',
+    outputs: 'Casa con estado "Terminado" en el sistema y observaciones cargadas, habilitando el fichaje de Control Calidad.',
+    rules: [
+      'SLA: máximo 7 días por etapa, monitoreado por la Coordinadora.',
+      'Operaciones nunca recibe la casa "buena" desde sí misma: existen tres revisiones en cascada para evitar autocomplacencia.',
+      'Árbol de falla obligatorio en cada observación: Recinto · Especialidad · Ítem · Problema (4 columnas).',
+      'No se evalúa usabilidad porque la casa aún no está habitada — solo diseño, materialidad y ejecución.',
+      'Sin la marca "Terminado" no se puede avanzar a la siguiente etapa.'
+    ],
+    metrics: [
+      {v:'7 días', l:'SLA por etapa'},
+      {v:'~40 obs.', l:'Volumen típico'},
+      {v:'4 cols.', l:'Árbol de falla'}
+    ],
+    flow: [
+      {t:'Casa terminada', k:'start'},
+      {t:'Abre fichaje en sistema'},
+      {t:'Recorre recintos'},
+      {t:'Levanta observaciones'},
+      {t:'Marca "Terminado"'},
+      {t:'Habilita Calidad', k:'end'}
+    ]
+  },
+  'FIC-002': {
+    code: 'PRO-FIC-002',
+    title: 'Fichaje de Control Calidad',
+    description: 'Segundo filtro, ahora con un equipo independiente de Operaciones. Es la revisión más exigente del proceso: se prueban los sistemas críticos (agua, gas, alcantarillado, electricidad) y se mira la construcción con ojo técnico. Como contraste de profundidad, donde Operaciones detectó del orden de 40 observaciones, este fichaje suele encontrar varias veces más (típicamente sobre 250). Calidad puede rechazar la casa y devolverla a Operaciones cuantas veces sea necesario antes de aprobarla.',
+    actors: ['Control Calidad (cuadrilla QA)', 'Operaciones (recibe rechazos)'],
+    inputs: 'Vivienda con fichaje de Operaciones marcado "Terminado".',
+    outputs: 'Aprobación técnica que habilita Fichaje Comercial, o rechazo con observaciones devueltas a Operaciones.',
+    rules: [
+      'Trabajo de gran profundidad técnica: tuberías, instalaciones, presiones, conexiones.',
+      'Cada falla se asocia al árbol Recinto · Especialidad · Ítem · Problema con foto y ubicación.',
+      'Si rechaza, Operaciones corrige y la unidad vuelve a esta misma etapa — el ciclo se repite hasta el visto bueno técnico.',
+      'Lo que se filtre aquí no debería volver a aparecer en postventa: la trazabilidad histórica permite responsabilizar al que dejó pasar la falla.',
+      'SLA: 7 días por iteración.'
+    ],
+    metrics: [
+      {v:'~250 obs.', l:'Volumen típico'},
+      {v:'7 días', l:'SLA por etapa'},
+      {v:'N loops', l:'Hasta aprobar'}
+    ],
+    flow: [
+      {t:'Operaciones marca terminado', k:'start'},
+      {t:'Fichaje técnico'},
+      {t:'¿Aprueba?', k:'gw'},
+      {t:'No → vuelve a Operaciones'},
+      {t:'Sí → habilita Comercial', k:'end'}
+    ]
+  },
+  'FIC-003': {
+    code: 'PRO-FIC-003',
+    title: 'Fichaje Comercial',
+    description: 'Tercer y último filtro antes de la entrega, ahora con la mirada del cliente. Comercial pasa la casa con criterio estético y de experiencia: pintura, terminaciones, detalles visibles, simetrías y todo lo que el propietario va a notar al entrar. Como referencia, este filtro suele cargar del orden de 300 observaciones (mayoritariamente cosméticas), porque es el equipo que después tendrá que defender la entrega frente al cliente. Si la casa pertenece a un cliente VIP o estratégico, la Gerencia Comercial puede levantar un "Fichaje Especial" (banderita) que aumenta el rigor.',
+    actors: ['Comercial · Ejecutivos de entrega', 'Gerencia Comercial (Fichaje Especial)'],
+    inputs: 'Vivienda con Fichaje Calidad aprobado.',
+    outputs: 'Casa con visto bueno comercial, lista para iniciar el proceso de Entrega al propietario.',
+    rules: [
+      'Foco en lo estético: pintura, terminaciones, vidrios, fierros, alineaciones.',
+      'No se evalúa usabilidad — la casa todavía no se habita.',
+      'Si Comercial rechaza, las observaciones vuelven a Operaciones para corrección y luego pasan otra vez por Calidad.',
+      'Fichaje Especial: bandera levantada por Gerencia Comercial para casas de clientes sensibles o de alto perfil.',
+      'SLA 7 días por etapa.'
+    ],
+    metrics: [
+      {v:'~300 obs.', l:'Volumen típico'},
+      {v:'7 días', l:'SLA'},
+      {v:'Banderita', l:'Casos especiales'}
+    ],
+    flow: [
+      {t:'Calidad aprobó', k:'start'},
+      {t:'Revisión estética'},
+      {t:'¿Acepta?', k:'gw'},
+      {t:'No → Operaciones corrige'},
+      {t:'Sí → Lista para Entrega', k:'end'}
+    ]
+  },
+  'FIC-004': {
+    code: 'PRO-FIC-004',
+    title: 'Torre de Control · Coordinadora',
+    description: 'La Coordinadora de Fichaje y Entrega cumple un rol de torre de control sobre todo el proceso pre-entrega. Monitorea las unidades activas, los responsables asignados y los tiempos de cada etapa. Cuando una etapa supera el SLA de 7 días, el sistema dispara correos de alerta al responsable; si no se resuelve, la cascada escala automáticamente a la Subgerencia SAC. Visualiza el avance con un sistema de semáforo: verde aprobado, amarillo pendiente, rojo rechazado o vencido.',
+    actors: ['Coordinadora de Fichaje y Entrega', 'Sistema Integrado · alertas automáticas'],
+    inputs: 'Estado en tiempo real de todas las unidades en fichaje o entrega.',
+    outputs: 'Alertas al responsable, escalamientos a Subgerencia SAC y reportes de avance.',
+    rules: [
+      'Trabajo 100% sistémico: nada en papel ni en planilla aparte.',
+      'Cada etapa que pasa de 7 días gatilla alerta; si no se acusa recibo, el sistema insiste y luego escala.',
+      'Semáforo unificado para directores de obra, jefes de zona y SAC (verde · amarillo · rojo).',
+      'La Coordinadora también documenta excepciones que justifican atrasos.'
+    ],
+    metrics: [
+      {v:'Real time', l:'Monitoreo'},
+      {v:'7 días', l:'Disparo de alerta'},
+      {v:'🟢🟡🔴', l:'Semáforo'}
+    ],
+    flow: [
+      {t:'Monitorea procesos', k:'start'},
+      {t:'¿Supera 7 días?', k:'gw'},
+      {t:'Alerta al responsable'},
+      {t:'Escala a SAC si persiste'},
+      {t:'Cierra al resolverse', k:'end'}
+    ]
+  },
+  'ENT-001': {
+    code: 'PRO-ENT-001',
+    title: 'Agendamiento e Inspección de Entrega',
+    description: 'Una vez la casa pasó los tres fichajes, el ejecutivo de entrega cita al propietario para la recepción formal. El cliente recorre la vivienda junto al ejecutivo y revisa todo lo que va a recibir, con derecho a levantar observaciones en el sistema. La política es ofrecer hasta tres oportunidades reales de entrega antes de escalar. Si después de tres intentos el cliente no acepta, la Subgerencia SAC entra a intervenir directamente y, como último recurso, la entrega se formaliza por notaría.',
+    actors: ['Ejecutivo de Entrega', 'Propietario', 'Subgerencia SAC (en escalamiento)'],
+    inputs: 'Vivienda con los tres fichajes aprobados (Operaciones · Calidad · Comercial).',
+    outputs: 'Acta de inspección firmada por el ejecutivo y el cliente, con o sin observaciones.',
+    rules: [
+      'Hasta 3 intentos de entrega con el cliente antes de escalar.',
+      'En cada visita el cliente puede dejar nuevas observaciones registradas en el sistema.',
+      'Tras 3 fallidos interviene la Subgerencia SAC; tras un 4º se evalúa entrega notarial.',
+      'El registro se hace en el sistema en línea, con foto y firma cuando aplica.'
+    ],
+    metrics: [
+      {v:'3 intentos', l:'Directos con cliente'},
+      {v:'4°', l:'Interviene SAC'},
+      {v:'Notaría', l:'Último recurso'}
+    ],
+    flow: [
+      {t:'Casa lista', k:'start'},
+      {t:'Cita al cliente'},
+      {t:'Inspección conjunta'},
+      {t:'¿Acepta?', k:'gw'},
+      {t:'No → retrabajo'},
+      {t:'Sí → medidores', k:'end'}
+    ]
+  },
+  'ENT-002': {
+    code: 'PRO-ENT-002',
+    title: 'Retrabajo de Observaciones',
+    description: 'Cuando el cliente rechaza la entrega, las observaciones que levantó regresan a Operaciones para ser corregidas por la cuadrilla o los contratistas correspondientes. Cada ciclo de retrabajo se documenta en el sistema con evidencia y queda asociado a la unidad para trazabilidad. El protocolo permite hasta tres ciclos con el cliente; al cuarto se gatilla la intervención de SAC.',
+    actors: ['Operaciones', 'Contratistas', 'Coordinadora de Entrega'],
+    inputs: 'Acta de inspección con observaciones del propietario.',
+    outputs: 'Correcciones ejecutadas, evidencia cargada y nueva visita de entrega agendada.',
+    rules: [
+      'Tope de 3 ciclos de retrabajo con el cliente; al 4º interviene SAC.',
+      'Cada corrección debe registrarse en el sistema con foto antes/después cuando corresponda.',
+      'Las observaciones se priorizan según riesgo (un punto crítico se resuelve primero).',
+      'Las recurrentes alimentan el ranking de contratistas.'
+    ],
+    metrics: [
+      {v:'≤ 3', l:'Ciclos con cliente'},
+      {v:'Sistema', l:'Registro obligatorio'}
+    ],
+    flow: [
+      {t:'Observaciones del cliente', k:'start'},
+      {t:'Asigna contratista'},
+      {t:'Ejecuta corrección'},
+      {t:'Documenta en sistema'},
+      {t:'Reagenda visita', k:'end'}
+    ]
+  },
+  'ENT-003': {
+    code: 'PRO-ENT-003',
+    title: 'Lectura de Medidores',
+    description: 'Es el corte físico y legal de responsabilidad entre la constructora y el propietario. Antes de firmar, se toman lecturas de los tres medidores (agua, luz y gas, cuando corresponda) en presencia del cliente. Todo lo consumido hasta ese minuto queda a cargo de la constructora; desde ese minuto hacia adelante, del propietario. Cada lectura se documenta con foto y firma para evitar reclamos posteriores.',
+    actors: ['Ejecutivo de Entrega', 'Propietario'],
+    inputs: 'Cliente que ha aceptado el estado de la vivienda en la inspección.',
+    outputs: 'Registro de las 3 lecturas con foto y respaldo del corte de responsabilidades.',
+    rules: [
+      'Hasta la lectura: cuentas a cargo de la constructora.',
+      'Después de la lectura: cuentas a cargo del propietario.',
+      'Se registran los tres servicios: agua potable, energía eléctrica y gas (si aplica).',
+      'Las lecturas viajan al sistema con la unidad y se archivan en el expediente de entrega.'
+    ],
+    metrics: [
+      {v:'3 lecturas', l:'Agua · Luz · Gas'},
+      {v:'Corte', l:'De responsabilidad'}
+    ],
+    flow: [
+      {t:'Cliente acepta', k:'start'},
+      {t:'Medidor de agua'},
+      {t:'Medidor de luz'},
+      {t:'Medidor de gas'},
+      {t:'Registra y respalda', k:'end'}
+    ]
+  },
+  'ENT-004': {
+    code: 'PRO-ENT-004',
+    title: 'Firma de Acta + Entrega del Manual',
+    description: 'Cierre formal de la entrega. El cliente firma el acta de recepción y recibe el manual del propietario, que contiene instrucciones de uso, recomendaciones de mantención e información sobre las garantías legales. Desde la firma se activa el reloj de garantías por categoría: 3 años para terminaciones, 5 años para instalaciones, 10 años para estructura. La constructora ofrece acompañamiento de orientación los primeros meses para apoyar la habituación a la vivienda.',
+    actors: ['Ejecutivo de Entrega', 'Propietario', 'Área Legal'],
+    inputs: 'Inspección aceptada y medidores leídos.',
+    outputs: 'Acta firmada, manual entregado y garantías legales activadas.',
+    rules: [
+      'Garantías legales: 3 años terminaciones · 5 años instalaciones · 10 años estructura.',
+      'El manual incluye las garantías por ley en la página 8 del documento.',
+      'Sin acta firmada no hay entrega válida; con acta firmada arrancan los plazos legales.',
+      'Acompañamiento de orientación al propietario en los primeros meses.'
+    ],
+    metrics: [
+      {v:'3 / 5 / 10', l:'Años de garantía'},
+      {v:'Página 8', l:'Manual del propietario'},
+      {v:'6 meses', l:'Acompañamiento'}
+    ],
+    flow: [
+      {t:'Medidores OK', k:'start'},
+      {t:'Firma acta'},
+      {t:'Entrega manual'},
+      {t:'Activa garantías', k:'end'}
+    ]
+  },
+  'ENT-005': {
+    code: 'PRO-ENT-005',
+    title: 'Entrega Notarial (último recurso)',
+    description: 'Camino excepcional para cuando agotados los intentos directos y la intervención de SAC, el cliente sigue rechazando recibir. La constructora protocoliza la entrega ante notaría, generando un acta que produce efectos legales equivalentes a la entrega física. Es un mecanismo que se evita por una cuestión de cuidado de la relación con el cliente — solo se activa por necesidad.',
+    actors: ['Gerencia · Subgerencia SAC', 'Notaría', 'Área Legal'],
+    inputs: 'Cuatro o más intentos fallidos de entrega directa.',
+    outputs: 'Acta notarial que cierra formalmente el proceso de entrega.',
+    rules: [
+      'Requiere aprobación expresa de Gerencia.',
+      'Solo se usa cuando ya no quedan opciones de entrega directa con el cliente.',
+      'El acta notarial es el respaldo legal frente a plazos y responsabilidades posteriores.'
+    ],
+    metrics: [
+      {v:'Excepción', l:'Muy poco frecuente'},
+      {v:'Legal', l:'Respaldo formal'}
+    ],
+    flow: [
+      {t:'Fallaron 4 intentos', k:'start'},
+      {t:'Gerencia aprueba'},
+      {t:'Notaría emite acta'},
+      {t:'Cierre formal', k:'end'}
+    ]
+  },
+  'ING-001': {
+    code: 'PRO-ING-001',
+    title: 'Canal Presencial / Telefónico',
+    description: 'Vía tradicional de ingreso: el propietario llega a las oficinas de SAC o llama por teléfono. Un ejecutivo lo escucha y deja el caso registrado en el sistema en el acto. Antes de poder grabar, el sistema fuerza un popup donde el ejecutivo debe confirmar teléfono y correo actualizados del cliente — incluso si lo conoce — porque sin esos datos validados no se puede avanzar. La evidencia para el cliente es el correo automático con el número de pre-ticket: si no llega ese correo, la solicitud no quedó registrada.',
+    actors: ['Propietario', 'Ejecutivo SAC', 'Recepción'],
+    inputs: 'Solicitud verbal del propietario en oficina o por teléfono.',
+    outputs: 'Pre-ticket creado en el sistema y correo automático al cliente con el folio.',
+    rules: [
+      'Popup obligatorio para validar teléfono y correo antes de generar pre-ticket.',
+      'No se puede saltar la validación, aunque el ejecutivo conozca al cliente.',
+      'El correo con el folio es la prueba de ingreso para el propietario.',
+      'Cualquier ejecutivo puede atender; nadie es "dueño" del cliente.'
+    ],
+    metrics: [
+      {v:'Popup', l:'Validación obligatoria'},
+      {v:'Correo', l:'Evidencia al cliente'}
+    ],
+    flow: [
+      {t:'Cliente contacta', k:'start'},
+      {t:'Ejecutivo escucha'},
+      {t:'Popup valida datos'},
+      {t:'Crea pre-ticket'},
+      {t:'Envía correo', k:'end'}
+    ]
+  },
+  'ING-002': {
+    code: 'PRO-ING-002',
+    title: 'Portal Cliente · Autogestión',
+    description: 'Canal moderno de ingreso, pensado para que el propietario autogestione sus postventas sin depender de un ejecutivo. El portal autentica al cliente cruzando RUT con la(s) unidad(es) que tiene asociadas. Una vez dentro, el propietario crea su pre-ticket directamente, agrega evidencia y recibe el folio por correo. Para mantener carga balanceada, el portal aplica una regla de cuota: una solicitud por semana por casa; un RUT con dos casas puede levantar dos pre-tickets, uno por cada unidad, pero no puede acumular para "comprar" cuota extra.',
+    actors: ['Propietario', 'Portal Cliente · Sistema Integrado'],
+    inputs: 'Credenciales del propietario (RUT) y unidad asociada.',
+    outputs: 'Pre-ticket creado y asignado a un ejecutivo por round-robin.',
+    rules: [
+      'RUT debe estar asociado a la casa para abrir caso (cruce automático).',
+      'Cuota: 1 solicitud × 1 casa × semana; no se puede escalar usando otras casas.',
+      'El portal centraliza también pagos, cotizaciones y documentos del propietario.',
+      'Apunta a reducir el flujo de correos y llamadas a oficinas.'
+    ],
+    metrics: [
+      {v:'1 × semana', l:'Cuota por casa'},
+      {v:'RUT+Casa', l:'Autenticación'},
+      {v:'Round-Robin', l:'Asignación'}
+    ],
+    flow: [
+      {t:'Entra al portal', k:'start'},
+      {t:'Autentica RUT + casa'},
+      {t:'¿Cuota disponible?', k:'gw'},
+      {t:'Crea pre-ticket'},
+      {t:'Asigna ejecutivo', k:'end'}
+    ]
+  },
+  'ING-003': {
+    code: 'PRO-ING-003',
+    title: 'Canal Email / Web · Visita Terreno',
+    description: 'Recoge dos vías que históricamente estaban descuidadas: los correos electrónicos al casillero general y los formularios de la web. Hoy ambos están centralizados: el Subgerente SAC filtra lo que es atención al cliente y deriva al área correspondiente, mientras la Gerencia General se queda con lo que es negocio o reclamo institucional. También se considera aquí la "Visita SAC en obra" — cuando un equipo SAC sale a terreno por situaciones críticas (filtraciones, fallas masivas) y levanta solicitudes en la unidad. Con el avance del portal de autogestión, los correos vienen disminuyendo año a año.',
+    actors: ['Propietario', 'Subgerente SAC', 'Gerente General', 'SAC en terreno'],
+    inputs: 'Correo electrónico, formulario web o reporte presencial en obra.',
+    outputs: 'Solicitud derivada al área correcta con respuesta al cliente y, si aplica, pre-ticket.',
+    rules: [
+      'El Subgerente SAC es el primer filtro de la casilla general.',
+      'Lo que es de negocio o reclamo institucional sube al Gerente General.',
+      'Visita SAC obra solo cuando hay urgencia o situación crítica grupal.',
+      'Tendencia decreciente: el portal absorbe la mayoría del flujo.'
+    ],
+    metrics: [
+      {v:'Centralizado', l:'1 solo filtro'},
+      {v:'Cada vez menos', l:'Uso decreciente'}
+    ],
+    flow: [
+      {t:'Llega correo', k:'start'},
+      {t:'Subgerente SAC filtra'},
+      {t:'Deriva al área'},
+      {t:'Responde al cliente', k:'end'}
+    ]
+  },
+  'ING-004': {
+    code: 'PRO-ING-004',
+    title: 'Validación de Datos (RUT + Casa)',
+    description: 'Filtro automático que el sistema aplica antes de aceptar cualquier solicitud. Cruza tres dimensiones: que el RUT corresponda a un propietario válido, que la casa esté asociada a ese RUT, y que la unidad esté dentro del plazo legal de garantía por categoría (3 / 5 / 10 años). Si el cruce falla, se devuelve mensaje al ejecutivo o al portal, lo que dispara los caminos alternativos: completar datos, abrir flujo de excepción o, en algunos casos, derivar a Legal.',
+    actors: ['Sistema Integrado'],
+    inputs: 'RUT del cliente, identificador de la vivienda y datos de contacto.',
+    outputs: 'OK para generar pre-ticket o rechazo con motivo y siguiente acción sugerida.',
+    rules: [
+      'Cruce obligatorio RUT vs. casa antes de cualquier pre-ticket.',
+      'Si la casa está fuera de garantía → no se puede abrir caso ordinario; se evalúa flujo de excepción.',
+      'Valida también teléfono y correo actualizados antes de avanzar.',
+      'Garantías por categoría: 3 años terminaciones · 5 años instalaciones · 10 años estructura.'
+    ],
+    metrics: [
+      {v:'Obligatorio', l:'Antes de pre-ticket'},
+      {v:'3 garantías', l:'Verificadas'}
+    ],
+    flow: [
+      {t:'Solicitud entrante', k:'start'},
+      {t:'Cruza RUT + casa', k:'gw'},
+      {t:'¿En garantía?', k:'gw'},
+      {t:'Sí → genera pre-ticket'},
+      {t:'No → flujo excepción', k:'end'}
+    ]
+  },
+  'TKT-001': {
+    code: 'PRO-TKT-001',
+    title: 'Generación de Pre-Ticket',
+    description: 'Toda solicitud entra primero como pre-ticket, no como ticket directo. Es una capa de filtro intencional para que un ejecutivo humano revise el caso, complete datos faltantes y descarte duplicados o solicitudes mal armadas antes de comprometer SLA. El pre-ticket queda con folio único y dispara el correo al cliente con el número de caso. La estructura del pre-ticket obliga a mapear la falla en el árbol de cuatro niveles: Recinto · Especialidad · Ítem · Problema.',
+    actors: ['Sistema Integrado', 'Ejecutivo SAC'],
+    inputs: 'Solicitud validada por cualquiera de los 4 canales de ingreso.',
+    outputs: 'Pre-ticket con folio único, correo enviado al cliente y caso en cola para asignación.',
+    rules: [
+      'Nunca se crea un ticket "directo": el pre-ticket es obligatorio.',
+      'El pre-ticket se transforma en ticket formal en un máximo de 24 horas.',
+      'El árbol de falla (4 columnas) es obligatorio para cargar el caso.',
+      'Si pasan más de 24h sin convertirse, la Coordinadora gatilla alerta.'
+    ],
+    metrics: [
+      {v:'≤ 24h', l:'A ticket formal'},
+      {v:'4 cols.', l:'Árbol de falla'}
+    ],
+    flow: [
+      {t:'Solicitud validada', k:'start'},
+      {t:'Sistema crea pre-ticket'},
+      {t:'Correo al cliente'},
+      {t:'Cola de asignación', k:'end'}
+    ]
+  },
+  'TKT-002': {
+    code: 'PRO-TKT-002',
+    title: 'Asignación Round-Robin',
+    description: 'Mecanismo de reparto de carga: el sistema toma cada pre-ticket nuevo y lo asigna al siguiente ejecutivo de la lista en orden alfabético, evitando que el mismo ejecutivo reciba dos solicitudes seguidas. Esto distribuye el volumen, evita "ejecutivos universales" que se sobrecarguen y permite vacaciones y rotaciones sin que el cliente se quede sin atención. La asignación es transparente para el cliente: lo importante es que su caso ya tiene dueño y SLA.',
+    actors: ['Sistema Integrado', 'Ejecutivos SAC'],
+    inputs: 'Pre-ticket recién creado en cualquier canal.',
+    outputs: 'Pre-ticket en bandeja de un ejecutivo específico, listo para conversión.',
+    rules: [
+      'Asignación secuencial alfabética entre todos los ejecutivos activos.',
+      'Nunca el mismo ejecutivo dos veces seguidas para evitar concentración de carga.',
+      'Todos los ejecutivos pueden atender cualquier caso — no hay "ejecutivos exclusivos".',
+      'En vacaciones, el sistema salta al ejecutivo y lo retoma al volver.'
+    ],
+    metrics: [
+      {v:'Todos', l:'Atienden'},
+      {v:'Alfabético', l:'Reparto'}
+    ],
+    flow: [
+      {t:'Pre-ticket creado', k:'start'},
+      {t:'Toma siguiente ejecutivo'},
+      {t:'Notifica al ejecutivo'},
+      {t:'Avanza al siguiente', k:'end'}
+    ]
+  },
+  'TKT-003': {
+    code: 'PRO-TKT-003',
+    title: 'Conversión a Ticket (≤ 24h)',
+    description: 'En esta etapa el ejecutivo asignado revisa el pre-ticket, valida que la información esté completa, contacta al cliente si falta algo y lo transforma en ticket formal. La conversión gatilla el inicio del SLA de cierre y el agendamiento de la visita técnica. Internamente, el área se mide por su capacidad de comprimir tiempos: el promedio histórico estaba sobre los 70 días, hoy se logra cerrar bajo los 55-60 días excluyendo cartas, y la meta es seguir bajando hacia el benchmark de industria de 48 días.',
+    actors: ['Ejecutivo SAC asignado', 'Sistema Integrado'],
+    inputs: 'Pre-ticket en bandeja del ejecutivo.',
+    outputs: 'Ticket formal con SLA activo, fecha de visita y notificación al cliente.',
+    rules: [
+      'Máximo 24 horas desde la creación del pre-ticket para convertirlo en ticket.',
+      'SLA por etapa interna: 7 días (antes 15) — fuerza ritmo de cierre.',
+      'Tiempo objetivo de cierre integral: tender a 48 días, benchmark de industria.',
+      'Cada conversión queda en el reporte semanal y se cruza con el árbol de falla.'
+    ],
+    metrics: [
+      {v:'24h', l:'Pre → Ticket'},
+      {v:'7 días', l:'SLA por etapa'},
+      {v:'~55 días', l:'Promedio actual'}
+    ],
+    flow: [
+      {t:'Pre-ticket recibido', k:'start'},
+      {t:'Valida información'},
+      {t:'Convierte a ticket'},
+      {t:'Agenda visita'},
+      {t:'Inicia SLA', k:'end'}
+    ]
+  },
+  'TKT-004': {
+    code: 'PRO-TKT-004',
+    title: 'Marcar Postventa Crítica',
+    description: 'Mecanismo de excepción dentro del flujo normal: cuando un ticket tiene riesgo real para las personas, la Subgerencia SAC levanta una "bandera" que marca el caso como crítico y lo prioriza por sobre todo lo demás. Los tres detonantes claros son fugas de gas, fallas de electricidad con riesgo de electrocución y fugas de agua con potencial de daño mayor. El ticket se visualiza con bandera roja en el tablero y la cuadrilla se moviliza fuera de cola.',
+    actors: ['Subgerente SAC', 'Coordinadora SAC (registro)', 'Cuadrilla técnica'],
+    inputs: 'Ticket en curso con riesgo detectado por el ejecutivo o el cliente.',
+    outputs: 'Ticket con bandera crítica, despacho prioritario y registro en informe.',
+    rules: [
+      'Solo el Subgerente SAC marca un caso como crítico (la Coordinadora puede observar).',
+      'Tres riesgos clásicos que gatillan la bandera: agua, gas y electricidad.',
+      'Atención inmediata: rompe cola y se despacha cuadrilla disponible.',
+      'Cada bandera queda registrada y se reporta semanalmente.'
+    ],
+    metrics: [
+      {v:'Gas · Agua · Luz', l:'3 riesgos vitales'},
+      {v:'Inmediata', l:'Atención'}
+    ],
+    flow: [
+      {t:'Riesgo detectado', k:'start'},
+      {t:'Subgerente revisa'},
+      {t:'Marca como crítica'},
+      {t:'Despacha cuadrilla', k:'end'}
+    ]
+  },
+  'EJE-001': {
+    code: 'PRO-EJE-001',
+    title: 'Visita Técnica y Diagnóstico',
+    description: 'Un técnico de Control Calidad visita la vivienda en la fecha agendada y diagnostica la falla en el acto. La obligación es cargar el diagnóstico en la aplicación móvil durante la visita, asociando foto, ubicación y clasificación. El diagnóstico debe encasillar la causa en una de cuatro categorías: diseño, materialidad, ejecución o usabilidad. Si la falla es de usabilidad y no es responsabilidad de la constructora, igual se documenta para retroalimentar entrega y manual del propietario.',
+    actors: ['Técnico de Control Calidad', 'Propietario'],
+    inputs: 'Ticket formal con visita agendada.',
+    outputs: 'Diagnóstico cargado en app, OT definida y eventual marca crítica si aplica.',
+    rules: [
+      'Carga obligatoria en app móvil durante la visita (foto + ubicación + categoría).',
+      'Si no hay señal en terreno, sincronización diferida apenas haya conexión.',
+      'Clasificación obligatoria: diseño · materialidad · ejecución · usabilidad.',
+      'La usabilidad no se evalúa en fichaje; en postventa sí, para detectar mal uso o desinformación.'
+    ],
+    metrics: [
+      {v:'App móvil', l:'Carga obligatoria'},
+      {v:'4 causas', l:'Clasificación'}
+    ],
+    flow: [
+      {t:'Visita agendada', k:'start'},
+      {t:'Entra al hogar'},
+      {t:'Diagnostica en sitio'},
+      {t:'Sube a app móvil'},
+      {t:'Clasifica causa', k:'end'}
+    ]
+  },
+  'EJE-002': {
+    code: 'PRO-EJE-002',
+    title: 'Emisión de Orden de Trabajo',
+    description: 'A partir del diagnóstico, el ejecutivo emite una o varias órdenes de trabajo según las especialidades involucradas. Una sola solicitud puede gatillar N OT distintas si hay temas de gasfitería, pintura, eléctrico, etc. Cada OT se asigna al contratista de la especialidad y queda asociada a la unidad para trazabilidad. La unidad de medida del trabajo en terreno son las OT, mientras que las solicitudes se reportan como casos al cliente — son dimensiones distintas pero conectadas.',
+    actors: ['Ejecutivo SAC', 'Sistema Integrado', 'Contratistas'],
+    inputs: 'Diagnóstico técnico cargado en la app móvil.',
+    outputs: 'OT(s) emitidas, contratistas notificados y compromiso de visita programado.',
+    rules: [
+      '1 solicitud → N órdenes de trabajo según especialidades.',
+      'Cada OT pertenece a una sola especialidad (no se mezclan en la misma OT).',
+      'Las OT alimentan ranking de contratistas (calidad, plazo, devoluciones).',
+      'Si una OT requiere proveedor externo, se evalúa caso a caso.'
+    ],
+    metrics: [
+      {v:'1 → N', l:'Solicitud a OT'},
+      {v:'Por especialidad', l:'Asignación'}
+    ],
+    flow: [
+      {t:'Diagnóstico listo', k:'start'},
+      {t:'Identifica especialidades'},
+      {t:'Emite OT(s)'},
+      {t:'Asigna contratista', k:'end'}
+    ]
+  },
+  'EJE-003': {
+    code: 'PRO-EJE-003',
+    title: 'Ejecución por Contratista',
+    description: 'El contratista asignado coordina visita con el propietario y ejecuta el trabajo en la vivienda. Al terminar la reparación, se solicita la firma del acta de conformidad del cliente — solo con esa firma queda cerrada la OT. Si el cliente no queda conforme, la OT se reagenda y el caso vuelve a ejecución hasta que el trabajo cumpla los estándares. Cada ejecución alimenta el ranking de contratistas, que SAC usa para premiar a los mejores y desactivar a los peores.',
+    actors: ['Contratista (externo)', 'Propietario', 'Ejecutivo SAC (verifica)'],
+    inputs: 'OT recibida con el diagnóstico y el agendamiento.',
+    outputs: 'Reparación ejecutada, acta firmada y OT cerrada en sistema.',
+    rules: [
+      'Sin firma del cliente no se cierra la OT.',
+      'Si el cliente no queda conforme, se reagenda inmediatamente.',
+      'Las OT con devolución pesan negativo en el ranking del contratista.',
+      'Las OT bien ejecutadas con buena evaluación pesan positivo y aseguran flujo de trabajo.'
+    ],
+    metrics: [
+      {v:'Ranking', l:'Por contratista'},
+      {v:'Acta', l:'Firma obligatoria'}
+    ],
+    flow: [
+      {t:'OT recibida', k:'start'},
+      {t:'Coordina con cliente'},
+      {t:'Ejecuta reparación'},
+      {t:'¿Conforme?', k:'gw'},
+      {t:'No → reagenda'},
+      {t:'Sí → cierra OT', k:'end'}
+    ]
+  },
+  'EJE-004': {
+    code: 'PRO-EJE-004',
+    title: 'Excepción Fuera de Garantía',
+    description: 'Camino formal para atender, en casos justificados, solicitudes que ya están fuera del plazo legal de garantía. Tiene un control de tres firmas con clara separación de funciones: la Subgerencia SAC propone la excepción, la Subgerencia de Calidad valida que la falla efectivamente sea atribuible y la Gerencia General aprueba. Esta cadena impide que cualquier área se auto-apruebe una excepción y le da blindaje al pago: cuando la OT llega validada a Contabilidad, se cancela al proveedor sin fricción.',
+    actors: ['Subgerente SAC', 'Subgerente Calidad', 'Gerente General', 'Contabilidad'],
+    inputs: 'Solicitud con garantía técnica vencida pero con mérito para excepción.',
+    outputs: 'OT validada con triple firma, pagada al proveedor sin reproceso.',
+    rules: [
+      'Tres firmas obligatorias: SAC propone · Calidad técnica valida · GG aprueba.',
+      'Ninguna área puede auto-aprobarse: la separación de funciones es estructural.',
+      'Si la triple firma está completa, Contabilidad paga sin cuestionar.',
+      'La excepción puede rechazarse si el cliente fue maltratante o si la falla no aplica.'
+    ],
+    metrics: [
+      {v:'3 firmas', l:'SAC · Calidad · GG'},
+      {v:'Sin fricción', l:'Pago a proveedor'}
+    ],
+    flow: [
+      {t:'Solicitud fuera de garantía', k:'start'},
+      {t:'SAC propone'},
+      {t:'Calidad valida técnico'},
+      {t:'GG aprueba'},
+      {t:'Contabilidad paga', k:'end'}
+    ]
+  },
+  'CIE-001': {
+    code: 'PRO-CIE-001',
+    title: 'Firma de Acta Conforme',
+    description: 'Cierre formal del ticket cuando el cliente firma conformidad con el trabajo ejecutado. La firma puede ser limpia o venir con una nota aclaratoria del cliente; en este último caso, se revisa caso a caso si efectivamente corresponde marcar conforme. Históricamente, alrededor del 71-72% de las solicitudes terminan en cierre conforme; en 2025 SAC logró el orden de 5.500 cierres anuales. El cierre conforme es el evento que dispara la encuesta de satisfacción.',
+    actors: ['Propietario', 'Ejecutivo SAC', 'Contratista'],
+    inputs: 'OT ejecutada y vivienda con la falla resuelta.',
+    outputs: 'Acta firmada, ticket en estado "Cerrado conforme" y encuesta gatillada.',
+    rules: [
+      '~72% es la tasa promedio de cierre conforme.',
+      'Las firmas con nota se revisan individualmente para evitar cierres falsos.',
+      'Sólo el cierre conforme gatilla la encuesta de satisfacción.',
+      'El cierre cambia el estado en el sistema y libera la unidad para el siguiente caso.'
+    ],
+    metrics: [
+      {v:'~72%', l:'Tasa conforme'},
+      {v:'5.500+', l:'Cierres en 2025'},
+      {v:'Auto', l:'Dispara encuesta'}
+    ],
+    flow: [
+      {t:'Trabajo terminado', k:'start'},
+      {t:'Cliente revisa'},
+      {t:'Firma acta'},
+      {t:'Cierra ticket'},
+      {t:'Encuesta automática', k:'end'}
+    ]
+  },
+  'CIE-002': {
+    code: 'PRO-CIE-002',
+    title: 'Encuesta de Satisfacción',
+    description: 'Mecanismo formal para escuchar al cliente después de cada postventa cerrada conforme. La encuesta arrancó el 1 de abril y mide tres dimensiones independientes: la atención del funcionario que llevó el caso, el proceso sistémico (uso del portal, comunicación, plazos) y el proceso constructivo (calidad de la reparación). En paralelo existe la encuesta de entrega, que mide proceso, producto y gestión al recibir la casa. Los datos comparativos serios se empiezan a leer después del primer mes para evitar conclusiones con muestra chica.',
+    actors: ['Sistema · módulo encuestas', 'Propietario', 'Subgerencia SAC (analiza)'],
+    inputs: 'Ticket en estado "Cerrado conforme".',
+    outputs: 'Respuesta del cliente registrada y disponible para análisis y reportes.',
+    rules: [
+      'Envío automático por correo al cierre conforme — no es opcional.',
+      'Tres dimensiones medidas por separado: funcionario · proceso · producto.',
+      'Existe además encuesta de entrega (proceso constructivo · producto · gestión SAC).',
+      'Análisis de tendencias se realiza con más de un mes de data acumulada.'
+    ],
+    metrics: [
+      {v:'3 dim.', l:'Funcionario · Proceso · Producto'},
+      {v:'1 abr.', l:'Inicio operativo'},
+      {v:'Auto', l:'Por cada cierre conforme'}
+    ],
+    flow: [
+      {t:'Cierre conforme', k:'start'},
+      {t:'Sistema envía encuesta'},
+      {t:'Cliente responde'},
+      {t:'Se registra resultado', k:'end'}
+    ]
+  },
+  'CIE-003': {
+    code: 'PRO-CIE-003',
+    title: 'Informe Semanal Automático',
+    description: 'Cada lunes el sistema genera de forma automática un informe de 23 páginas que consolida toda la operación SAC: ranking por obra y por jefe de zona, árbol de fallas, tiempos de cierre, casos en garantía, banderas críticas, contratistas mejor y peor evaluados. El informe llega directo al responsable de cada obra y a la jefatura de zona; no es un reporte que la gerencia tiene que pedir. El Subgerente SAC valida que los números no estén alterados antes del envío. La rutina corre incluso en vacaciones, sin excepciones.',
+    actors: ['Sistema (módulo BI)', 'Subgerente SAC (valida)', 'Directores de obra · Jefes de zona (reciben)'],
+    inputs: 'Datos de la semana en curso, histórico acumulado y solicitudes del directorio.',
+    outputs: 'PDF de 23 páginas distribuido a los responsables operativos.',
+    rules: [
+      'Corre los lunes sí o sí, incluso si la subgerencia está fuera.',
+      'El informe incluye rankings nominativos para forzar accountability.',
+      'Cualquier solicitud puntual del directorio se incorpora al informe para no rehacer la pega.',
+      'El informe va directo al responsable, sin pasar por filtros gerenciales intermedios.'
+    ],
+    metrics: [
+      {v:'23 pág.', l:'Informe semanal'},
+      {v:'Lunes', l:'Sin excepciones'},
+      {v:'Directo', l:'Al responsable'}
+    ],
+    flow: [
+      {t:'Lunes 00:00', k:'start'},
+      {t:'Sistema compila'},
+      {t:'Subgerente valida'},
+      {t:'Envía a responsables', k:'end'}
+    ]
+  },
+  /* ===== Eventos de inicio / fin del flujograma ===== */
+  'EVT-INI-PRE': {
+    code: 'EVT-INI-PRE',
+    title: 'INICIO · Casa terminada por obra',
+    description: 'Punto de partida del Ciclo 1 (Pre-Entrega). Una unidad acaba de ser terminada físicamente por la obra y queda en condiciones de entrar al proceso de fichaje. Aún no hay cliente involucrado: la casa todavía es de la constructora y debe pasar por tres filtros internos antes de ofrecerse al propietario.',
+    actors: ['Director de obra', 'Jefe de zona'],
+    inputs: 'Vivienda con obra fina terminada (terminaciones, instalaciones, sistemas).',
+    outputs: 'Unidad disponible para Fichaje de Operaciones.',
+    rules: [
+      'No hay relación con el cliente todavía.',
+      'La unidad se considera "terminada" solo cuando obra confirma cierre.',
+      'A partir de aquí corre el SLA por etapa de fichaje (7 días).'
+    ],
+    metrics: [{v:'0', l:'Casa todavía sin cliente'}],
+    flow: [
+      {t:'Obra termina', k:'start'},
+      {t:'Habilita fichaje', k:'end'}
+    ]
+  },
+  'EVT-FIN-PRE': {
+    code: 'EVT-FIN-PRE',
+    title: 'FIN · Casa entregada al propietario',
+    description: 'Cierre exitoso del Ciclo 1 (Pre-Entrega). La vivienda fue inspeccionada por el cliente, se firmó el acta y se entregó el manual. Se activan las garantías legales y la casa pasa a manos del propietario. Desde este evento, cualquier falla nueva entra como Postventa (Ciclo 2).',
+    actors: ['Propietario', 'Ejecutivo de Entrega'],
+    inputs: 'Acta de entrega firmada y medidores leídos.',
+    outputs: 'Casa habitable, garantías activas y registro formal de la entrega.',
+    rules: [
+      'Activa garantías 3/5/10 años (terminaciones · instalaciones · estructura).',
+      'Inicia el período de acompañamiento al propietario.',
+      'A partir de este punto, los reclamos siguen el flujo de postventa.'
+    ],
+    metrics: [
+      {v:'3 / 5 / 10', l:'Años de garantía'}
+    ],
+    flow: [
+      {t:'Acta firmada', k:'start'},
+      {t:'Casa al cliente', k:'end'}
+    ]
+  },
+  'EVT-INI-POST': {
+    code: 'EVT-INI-POST',
+    title: 'INICIO · Cliente detecta una falla en su casa',
+    description: 'Punto de partida del Ciclo 2 (Postventa). La casa ya está en poder del propietario y este detecta una falla, una incomodidad o un evento que requiere atención de la constructora. Desde aquí se activa el flujo formal de SAC.',
+    actors: ['Propietario'],
+    inputs: 'Vivienda en uso, dentro de plazo de garantía o en evaluación de excepción.',
+    outputs: 'Decisión del cliente de levantar una solicitud por uno de los 4 canales.',
+    rules: [
+      'El cliente puede usar cualquier canal disponible.',
+      'Una solicitud por casa por semana (cuota anti-saturación).',
+      'Las fallas críticas (gas, agua, luz) tienen ruta acelerada.'
+    ],
+    metrics: [
+      {v:'1 × semana', l:'Cuota por casa'}
+    ],
+    flow: [
+      {t:'Cliente vive la falla', k:'start'},
+      {t:'Decide canal', k:'end'}
+    ]
+  },
+  'EVT-FIN-POST': {
+    code: 'EVT-FIN-POST',
+    title: 'FIN · Caso cerrado conforme',
+    description: 'Cierre exitoso del Ciclo 2 (Postventa). El cliente firmó el acta de conformidad, el ticket está cerrado en el sistema y la encuesta de satisfacción ya fue gatillada. El caso queda registrado en el histórico y alimenta los reportes semanales.',
+    actors: ['Propietario', 'Ejecutivo SAC', 'Sistema'],
+    inputs: 'Acta firmada y trabajo aceptado.',
+    outputs: 'Ticket en estado "Cerrado conforme" y encuesta enviada al cliente.',
+    rules: [
+      'Solo el cierre conforme cuenta como cierre exitoso.',
+      'Cierre dispara encuesta automática.',
+      'Tasa promedio histórica de cierre conforme: ~72%.'
+    ],
+    metrics: [
+      {v:'~72%', l:'Tasa conforme'},
+      {v:'Auto', l:'Encuesta enviada'}
+    ],
+    flow: [
+      {t:'Cierra ticket', k:'start'},
+      {t:'Caso archivado', k:'end'}
+    ]
+  },
+  'EVT-FIN-NOT': {
+    code: 'EVT-FIN-NOT',
+    title: 'FIN · Entrega Notarial (excepción)',
+    description: 'Cierre alternativo del Ciclo 1 cuando el cliente, después de los 3 intentos de entrega y de la intervención de la Subgerencia SAC, sigue rechazando recibir. Se protocoliza la entrega ante notaría, lo que produce efectos legales equivalentes a la entrega física.',
+    actors: ['Gerencia', 'Notaría', 'Legal'],
+    inputs: '4° intento de entrega fallido.',
+    outputs: 'Acta notarial de entrega y activación legal de garantías.',
+    rules: [
+      'Camino excepcional, se evita salvo necesidad.',
+      'Requiere aprobación de Gerencia.',
+      'Tiene los mismos efectos legales que una entrega firmada.'
+    ],
+    metrics: [
+      {v:'Excepción', l:'Frecuencia muy baja'}
+    ],
+    flow: [
+      {t:'4° intento falla', k:'start'},
+      {t:'Notaría protocoliza', k:'end'}
+    ]
+  },
+  'EVT-FIN-LEG': {
+    code: 'EVT-FIN-LEG',
+    title: 'FIN · Sin Cobertura · Deriva Legal',
+    description: 'Cierre alternativo del Ciclo 2 cuando la solicitud está fuera de garantía y la triple firma de la Excepción no se aprueba. La constructora informa al cliente que el caso no será atendido por SAC y, si corresponde, queda en manos del área Legal de la compañía.',
+    actors: ['Subgerente SAC', 'Legal'],
+    inputs: 'Solicitud fuera de garantía sin excepción aprobada.',
+    outputs: 'Comunicación formal al cliente y traspaso a Legal.',
+    rules: [
+      'Solo cuando la triple firma rechaza la excepción.',
+      'El cliente recibe respuesta formal con la justificación.',
+      'Se documenta como cierre no conforme para reportería.'
+    ],
+    metrics: [
+      {v:'No', l:'Atendido por SAC'}
+    ],
+    flow: [
+      {t:'Excepción rechazada', k:'start'},
+      {t:'Deriva Legal', k:'end'}
+    ]
+  },
+  /* ===== Sub-canales del ingreso (cada nodo único) ===== */
+  'ING-001A': {
+    code: 'PRO-ING-001A',
+    title: 'Canal Presencial (oficina SAC)',
+    description: 'El propietario llega físicamente a las oficinas de Servicio al Cliente y conversa con un ejecutivo. Es el canal más cercano al cliente y se usa cuando el caso requiere explicación detallada o el propietario quiere mostrar fotos. El ejecutivo levanta el caso en el sistema en presencia del cliente.',
+    actors: ['Propietario', 'Ejecutivo SAC', 'Recepción'],
+    inputs: 'Propietario presente en oficina con la descripción de la falla.',
+    outputs: 'Pre-ticket creado en sistema y correo automático con el folio.',
+    rules: [
+      'Popup obligatorio para validar teléfono y correo del cliente antes de grabar.',
+      'No se entrega ticket en papel: la prueba es el correo automático.',
+      'Cualquier ejecutivo puede atender (no hay ejecutivo "exclusivo").'
+    ],
+    metrics: [
+      {v:'Popup', l:'Validación obligatoria'},
+      {v:'Correo', l:'Evidencia al cliente'}
+    ],
+    flow: [
+      {t:'Cliente llega a oficina', k:'start'},
+      {t:'Ejecutivo escucha'},
+      {t:'Valida datos en popup'},
+      {t:'Crea pre-ticket'},
+      {t:'Envía correo', k:'end'}
+    ]
+  },
+  'ING-001B': {
+    code: 'PRO-ING-001B',
+    title: 'Canal Telefónico (Call Center)',
+    description: 'El propietario llama a la línea de SAC y un ejecutivo lo atiende en línea. La conversación se registra y el ejecutivo abre el pre-ticket en el sistema mientras conversa. El correo automático con el folio queda como prueba para el cliente.',
+    actors: ['Propietario', 'Ejecutivo SAC'],
+    inputs: 'Llamada del propietario describiendo la falla.',
+    outputs: 'Pre-ticket creado y correo enviado al cliente.',
+    rules: [
+      'Popup obligatorio para confirmar contacto antes de avanzar.',
+      'El correo electrónico es la prueba de la solicitud.',
+      'Si el cliente no recibe el correo, la solicitud no quedó registrada.'
+    ],
+    metrics: [
+      {v:'Popup', l:'Validación obligatoria'},
+      {v:'Correo', l:'Evidencia al cliente'}
+    ],
+    flow: [
+      {t:'Cliente llama', k:'start'},
+      {t:'Ejecutivo escucha'},
+      {t:'Valida datos'},
+      {t:'Crea pre-ticket'},
+      {t:'Envía correo', k:'end'}
+    ]
+  },
+  'ING-005': {
+    code: 'PRO-ING-005',
+    title: 'Visita SAC en Obra (terreno)',
+    description: 'Canal de excepción usado cuando hay un evento crítico o cuando un equipo de SAC sale a una obra entregada (un condominio, una etapa, una torre) para detectar fallas masivas o para hacer presencia en situaciones sensibles. En la visita se levantan solicitudes en el sistema de los propietarios que requieran atención.',
+    actors: ['Equipo SAC en terreno', 'Propietarios afectados', 'Director de obra'],
+    inputs: 'Programación de visita o evento crítico detectado.',
+    outputs: 'Pre-tickets creados en terreno y derivación a las áreas correspondientes.',
+    rules: [
+      'No reemplaza al portal: es complementario para casos masivos o sensibles.',
+      'Requiere coordinación entre SAC y el equipo de obra.',
+      'Cada solicitud levantada en terreno entra al mismo flujo que el resto.'
+    ],
+    metrics: [
+      {v:'Excepcional', l:'Frecuencia'},
+      {v:'Masivo', l:'Permite atender varias casas'}
+    ],
+    flow: [
+      {t:'Programación o emergencia', k:'start'},
+      {t:'Equipo SAC va a terreno'},
+      {t:'Levanta solicitudes'},
+      {t:'Sistema crea pre-tickets', k:'end'}
+    ]
+  },
+  /* ===== Pasos específicos del flujo ===== */
+  'TKT-005': {
+    code: 'PRO-TKT-005',
+    title: 'Notifica al Cliente (correo automático)',
+    description: 'Cuando se confirma el ticket formal, el sistema envía un correo automático al propietario con el número de caso, el SLA esperado, los próximos pasos y el ejecutivo asignado. Es el primer compromiso visible que ve el cliente.',
+    actors: ['Sistema Integrado', 'Propietario'],
+    inputs: 'Ticket recién convertido (24h tras pre-ticket).',
+    outputs: 'Correo de confirmación con folio y SLA.',
+    rules: [
+      'Sin correo enviado, el ticket no se considera notificado.',
+      'El correo incluye el SLA y el ejecutivo asignado.',
+      'Es la principal prueba para el cliente del registro de su caso.'
+    ],
+    metrics: [
+      {v:'Auto', l:'Envío sistémico'}
+    ],
+    flow: [
+      {t:'Ticket convertido', k:'start'},
+      {t:'Sistema arma correo'},
+      {t:'Envía al cliente', k:'end'}
+    ]
+  },
+  'EJE-005': {
+    code: 'PRO-EJE-005',
+    title: 'Inspección Conjunta de Entrega',
+    description: 'Recorrido en conjunto entre el ejecutivo y el propietario, casa por casa. El ejecutivo va explicando lo que el cliente está recibiendo, le muestra cómo operar instalaciones (gas, electricidad, agua) y registra cualquier observación que el cliente plantee. Es la visita en la que el cliente decide si acepta o no la entrega.',
+    actors: ['Ejecutivo de Entrega', 'Propietario'],
+    inputs: 'Casa con tres fichajes aprobados y agendamiento confirmado.',
+    outputs: 'Acta de inspección con o sin observaciones del cliente.',
+    rules: [
+      'Es la primera vez que el cliente recorre formalmente la casa.',
+      'Cada observación queda en el sistema.',
+      'Si el cliente acepta, se sigue con medidores; si no, va a retrabajo.',
+      'Se permiten hasta 3 inspecciones (3 intentos de entrega) antes de escalar.'
+    ],
+    metrics: [
+      {v:'3 intentos', l:'Permitidos'},
+      {v:'Conjunta', l:'Cliente + Ejecutivo'}
+    ],
+    flow: [
+      {t:'Cita confirmada', k:'start'},
+      {t:'Recorrido por recintos'},
+      {t:'Cliente plantea observaciones'},
+      {t:'¿Acepta?', k:'gw'},
+      {t:'Sí → medidores'},
+      {t:'No → retrabajo', k:'end'}
+    ]
+  },
+  'CIE-004': {
+    code: 'PRO-CIE-004',
+    title: 'Tablero del Directorio',
+    description: 'Cada tres meses el directorio sesiona sobre SAC y pide indicadores específicos: tendencias por proyecto, tipologías de falla, rendimiento de contratistas, evolución del NPS. Cada nueva pregunta del directorio queda incorporada al informe semanal automático, de modo que cuando vuelven a preguntar la información ya está construida. Esto evita rehacer manualmente reportes y consolida un tablero gerencial que crece en el tiempo. La Subgerencia SAC también lleva al directorio las decisiones que requieren respaldo institucional, como excepciones masivas o cambios de proceso.',
+    actors: ['Subgerente SAC', 'Gerente General', 'Directorio'],
+    inputs: 'Datos acumulados del informe semanal y solicitudes del directorio.',
+    outputs: 'Tablero trimestral, decisiones documentadas e indicadores incorporados al informe semanal.',
+    rules: [
+      'Cada pregunta del directorio se integra al informe semanal automático.',
+      'Política operativa: hacer la pega una sola vez, automatizar el resto.',
+      'Rankings nominativos por director de obra, jefe de zona y tipo de proyecto.',
+      'Las decisiones del directorio bajan al sistema y al informe para trazabilidad.'
+    ],
+    metrics: [
+      {v:'Cada 3 meses', l:'Sesión'},
+      {v:'Acumulativo', l:'Indicadores al informe'}
+    ],
+    flow: [
+      {t:'Directorio solicita', k:'start'},
+      {t:'Se integra al informe'},
+      {t:'Reporte trimestral'},
+      {t:'Queda automatizado', k:'end'}
+    ]
+  }
+};
+
+/* ========== MODAL ========== */
+const modal = document.getElementById('modal');
+function renderFlow(steps){
+  if (!steps) return '';
+  return steps.map((s,i)=>{
+    const cls = s.k ? 'fstep '+s.k : 'fstep';
+    const arr = i < steps.length-1 ? '<span class="farrow">→</span>' : '';
+    return `<div class="${cls}">${s.t}</div>${arr}`;
+  }).join('');
+}
+function openCard(proc){
+  const d = PROC[proc];
+  if (!d) return;
+  document.getElementById('mCode').textContent = d.code;
+  document.getElementById('mTitle').textContent = d.title;
+
+  let html = `<p>${d.description}</p>`;
+
+  if (d.metrics && d.metrics.length) {
+    html += '<div class="modal-grid">';
+    d.metrics.forEach(m=> html += `<div class="modal-metric"><b>${m.v}</b><small>${m.l}</small></div>`);
+    html += '</div>';
+  }
+
+  html += '<h4>Flujo resumido</h4>';
+  html += `<div class="modal-flow"><div class="flow-mini">${renderFlow(d.flow)}</div></div>`;
+
+  html += '<h4>Actores involucrados</h4>';
+  html += `<ul>${d.actors.map(a=>`<li>${a}</li>`).join('')}</ul>`;
+
+  html += '<h4>Entradas / Salidas</h4>';
+  html += `<ul><li><b>Input:</b> ${d.inputs}</li><li><b>Output:</b> ${d.outputs}</li></ul>`;
+
+  html += '<h4>Reglas de negocio</h4>';
+  html += `<ul>${d.rules.map(r=>`<li>${r}</li>`).join('')}</ul>`;
+
+  document.getElementById('mBody').innerHTML = html;
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(){
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+/* ========== CARD CLICK ========== */
+document.querySelectorAll('.card').forEach(c => {
+  c.addEventListener('click', () => openCard(c.dataset.proc));
+});
+
+/* ========== BPMN NODE CLICK ========== */
+document.querySelectorAll('.bpmn-canvas .node').forEach(n => {
+  n.addEventListener('click', () => {
+    const p = n.dataset.proc;
+    if (p && PROC[p]) openCard(p);
+  });
+});
+
+/* ========== BPMN ZOOM ========== */
+let bpmnScale = 1;
+function bpmnZoom(delta){
+  const svgs = document.querySelectorAll('.bpmn-canvas svg');
+  if (!svgs.length) return;
+  if (delta === 0) { bpmnScale = 1; }
+  else { bpmnScale = Math.max(0.6, Math.min(1.6, bpmnScale + delta)); }
+  svgs.forEach(svg => {
+    svg.style.transform = 'scale(' + bpmnScale + ')';
+    svg.style.transformOrigin = 'top left';
+  });
+}
+
+/* ========== FILTER CHIPS ========== */
+const chips = document.querySelectorAll('#filterChips .chip');
+chips.forEach(ch => {
+  ch.addEventListener('click', () => {
+    chips.forEach(c => c.classList.remove('active'));
+    ch.classList.add('active');
+    const f = ch.dataset.filter;
+    document.querySelectorAll('.card').forEach(c=>{
+      if (f === 'all' || c.dataset.area === f) c.classList.remove('dimmed');
+      else c.classList.add('dimmed');
+    });
+  });
+});
+</script>
+</body>
+</html>
